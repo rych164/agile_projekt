@@ -7,7 +7,7 @@ from helpers import login_required
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE-URI']='sqlite:///głodny-online.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
 db=SQLAlchemy(app)
 
 app.config["SESSION_PERMANENT"] = False
