@@ -1,11 +1,14 @@
 from flask import Flask, redirect, render_template, url_for, request, session
 from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import login_required
+from helpers import login_required, error
 
 
 app = Flask(__name__)
-
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
+db=SQLAlchemy(app)
 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -20,20 +23,109 @@ def after_request(response):
     return response
 
 
+class Users(db.Model):
+    user_id = db.Column(db.Integer,primary_key=True)
+    name=db.Column(db.String(200),nullable=False)
+    surname=db.Column(db.String(200),nullable=False)
+    email=db.Column(db.String(200),nullable=False)
+    password=db.Column(db.String(200),nullable=False)
+    date_time_of_account_creation=db.Column(db.DateTime, default=datetime.utcnow())
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
+
+with app.app_context():
+    db.create_all()
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    """Logowanie użytkownika"""
+    session.clear()
+
+    # Metoda POST
+    if request.method == "POST":
+        # Sprawdzam czy dane zostały podane
+        if not request.form.get("E-mail") or not request.form.get("Haslo"):
+            return error("Musisz podać e-mail i hasło!")
+
+        # Szukam w bazie czy taki użytkownik istnieje i sprawdzam hasło
+        user = db.session.query(Users).filter(Users.email == request.form.get("E-mail")).first()
+        if not user:
+            return error("Niepoprawny e-mail lub hasło!")
+
+        password = check_password_hash(user.password, request.form.get("Haslo"))
+
+        if not password:
+            return error("Niepoprawny e-mail lub hasło!")
+
+        # Zapamiętuje, że użytkownik jest zalagowany
+        user_id = user.user_id
+        session["user_id"] = user_id
+
+        # Przekierowuje na strone główną
+        return redirect("/")
+
+    # Metoda GET
+    else:
+        return render_template("login.html")
 
 
-@app.route("/register")
+@app.route("/logout")
+def logout():
+    """Wylogowanie"""
+
+    session.clear()
+
+    return redirect("/")
+
+
+@app.route("/register", methods=["GET", "POST"])  # metoda GET służy do wyświtlenia strony, a POST, gdy ze strony wysyłane są jakieś informacje do serwera np. formularz
 def register():
-    return render_template("register.html")
-    
+    """Rejestracja użytkownika"""
+    # Metoda POST
+    if request.method == "POST":
+        # Sprawdzam czy wszytkie wymagane dane zostały podane i czy nie są już zajętę.
+        if (not request.form.get("Imie") or
+                not request.form.get("Nazwisko") or
+                not request.form.get("E-mail") or
+                not request.form.get("Haslo") or
+                not request.form.get("HasloPowtorz")):
+            return error("Wszystkie pola muszą być wypełnione")
+
+        # Sprawdzam czy hasło i potwierdzenie hasła jest poprawne, w przeciwnym razie wyświetlam błąd
+        if request.form.get("HasloPowtorz") != request.form.get("Haslo"):
+            return error("Hasło musi się zgadzać")
+
+        # Tutaj sprawdzam czy email nie jest zajęty
+        user = db.session.query(Users).filter(Users.email == request.form.get("E-mail")).first()
+        if user:
+            return error("Ten adres e-mail jest zajęty!")
+
+        else:
+            email = request.form.get("E-mail")
+            imie = request.form.get("Imie")
+            nazwisko = request.form.get("Nazwisko")
+            haslo = generate_password_hash(request.form.get("Haslo"))
+
+	        # dodaje użytkownika do bazy danych
+
+            new_user = Users(name=imie, surname=nazwisko, email=email,  password=haslo)
+            db.session.add(new_user)
+            db.session.commit()
+
+	        # Przekierowuje na strone główną
+            return redirect("/")
+    # Tutaj jest metoda GET, czyli wyświetlam template register.html
+    else:
+        return render_template("register.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
