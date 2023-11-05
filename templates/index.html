@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-
+<% extends 'base.html'%>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title> Index</title>
-    </head>
-    <body>
-        <h1 style="text-align: center; color: red">Strona glowna</h1>
-    </body>
-</html>
+{% block head %} 
+<meta charset="UTF-8" />
+<title> Index</title>
+{% endblock %}
+    
+{% block body %}
+    <h1 style="text-align: center; color: red">Strona glowna</h1>
+{% endblock %}
