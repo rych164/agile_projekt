@@ -16,10 +16,6 @@ input {
   position: relative;
   text-align: right;
   margin-right: 50%;
+  width: 100px;
 }
-.proba{
-position: relative;
-  text-align: left;
-  margin-left: 50%;
-  
-}
+
