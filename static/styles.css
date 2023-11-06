@@ -12,12 +12,12 @@ input {
   position: center;
 }
 .logowanie{
-  position: absolute;
+  position: relative;
   text-align: right;
   margin-right: 50%;
 }
 .proba{
-position: absolute;
+position: relative;
   text-align: left;
   margin-left: 50%;
   
