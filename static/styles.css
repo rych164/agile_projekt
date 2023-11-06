@@ -12,6 +12,7 @@ input {
   position: center;
 }
 .Logowanie{
+  position: relative;
   text-align: right;
   
 }
