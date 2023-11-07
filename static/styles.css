@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  font-size: 100px;
+  font-size: 15px;
 }
 button {
   position: center;
@@ -14,13 +14,8 @@ input {
 }
 .logowanie{
   position: relative;
-  text-align: right;
- 
+  float: right;
   width: 50%;
   height: 10%;
 }
-.proba{
-width:50%;
-  height:10%;
-  text-align:left;
-}
+
