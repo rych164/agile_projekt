@@ -25,4 +25,23 @@ input {
   height: 10%;
   text-align: right;
 }
-
+.logowanie ul li
+{
+	margin: 0 -5px 0 0;
+	display: inline-block;
+	background-color: #6030a0;
+	list-style-type: none;
+}
+.logowanie ul ul
+{
+	display: none;
+	position: absolute;
+	background-color: #8000a0;
+	top: 100%;
+}
+.logowanie ul ul li
+{
+	min-width: 120px;
+	display: list-item;
+	position: relative;
+}
