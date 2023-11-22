@@ -5,7 +5,7 @@
 body {
 	font-family:arial;
 	padding: 20px;
-	background-color: #8080ff;
+	background-color: #DC143C;
 }
 header {
 	background-color:#fff;
@@ -19,9 +19,9 @@ nav {
 	background-color:#333;
 }
 nav a {
-	float:left;
+	float:right;
 	display:block;
-	color:#f2f2f2;
+	color:#F0E68C;
 	text-align:center;
 	padding:14px 16px;
 	text-decoration:none;
