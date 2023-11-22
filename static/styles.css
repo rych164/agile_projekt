@@ -45,3 +45,7 @@ input {
 	display: list-item;
 	position: relative;
 }
+.logowanie ul li:hover > ul
+{
+	display: block;
+}
