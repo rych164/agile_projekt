@@ -22,7 +22,7 @@ connection = sqlite3.connect('test.db')
 cursor = connection.cursor()
 
 command1="""Create table if not exists 
-orders(order_id INTEGER PRIMARY KEY, user_id INTEGER FOREIGN KEY, phone_number INTEGER, town TEXT, street TEXT, home_number TEKST, apartment_number TEKST  )"""
+orders(order_id INTEGER PRIMARY KEY, user_id INTEGER, phone_number INTEGER, town TEXT, street TEXT, home_number TEKST, apartment_number TEKST, FOREIGN KEY(user_id)REFERENCES Users(user_id) )"""
 
 command2="""CREATE TABLE IF NOT EXISTS
 menu(menu_id INTEGER PRIMARY KEY,restaurant TEXT, product TEXT, prize REAL)"""
