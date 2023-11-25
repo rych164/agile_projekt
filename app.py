@@ -1,3 +1,5 @@
+import sqlite3
+
 from flask import Flask, redirect, render_template, url_for, request, session
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
@@ -14,6 +16,19 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+
+connection = sqlite3.connect('test.db')
+
+cursor = connection.cursor()
+
+command1="""Create table if not exists 
+orders(order_id INTEGER PRIMARY KEY, user_id INTEGER FOREIGN KEY, phone_number INTEGER, town TEXT, street TEXT, home_number TEKST, apartment_number TEKST  )"""
+
+command2="""CREATE TABLE IF NOT EXISTS
+menu(menu_id INTEGER PRIMARY KEY,restaurant TEXT, product TEXT, prize REAL)"""
+
+cursor.execute(command1)
+cursor.execute(command2)
 
 @app.after_request
 def after_request(response):
