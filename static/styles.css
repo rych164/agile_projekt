@@ -80,3 +80,13 @@ footer {
 		width:100%;
 	}
 }
+.dostawa{
+	text-align:center;
+	background-color: #fff;
+	padding:20px;
+	margin-top:20px;
+}
+.dostawa form label{
+	text-decoration:bold;
+	
+}
