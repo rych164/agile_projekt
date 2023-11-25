@@ -17,16 +17,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-connection = sqlite3.connect('test.db')
-
-cursor = connection.cursor()
-
-
-command2="""CREATE TABLE IF NOT EXISTS
-menu(menu_id INTEGER PRIMARY KEY,restaurant TEXT, product TEXT, prize REAL)"""
-
-cursor.execute(command2)
-
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -34,6 +24,15 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+
+class Menu(db.Model):
+    menu_id=db.Column(db.Integer,primary_key=True)
+    restaurant=db.Column(db.Text,nullable=False)
+    produtc=db.Column(db.Text,nullable=False)
+    prize=db.Column(db.Real,nullable=False)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
 class Orders(db.Model):
     order_id = db.Column(db.Integer,primary_key=True)
     user_id = db.Column(db.Integer,foreign_key=True)
