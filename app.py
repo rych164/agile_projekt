@@ -21,13 +21,10 @@ connection = sqlite3.connect('test.db')
 
 cursor = connection.cursor()
 
-command1="""Create table if not exists 
-orders(order_id INTEGER PRIMARY KEY, user_id INTEGER, phone_number INTEGER, town TEXT, street TEXT, home_number TEKST, apartment_number TEKST, FOREIGN KEY(user_id)REFERENCES Users(user_id) )"""
 
 command2="""CREATE TABLE IF NOT EXISTS
 menu(menu_id INTEGER PRIMARY KEY,restaurant TEXT, product TEXT, prize REAL)"""
 
-cursor.execute(command1)
 cursor.execute(command2)
 
 @app.after_request
@@ -37,6 +34,17 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
+class Orders(db.Model):
+    order_id = db.Column(db.Integer,primary_key=True)
+    user_id = db.Column(db.Integer,foreign_key=True)
+    phone_number=db.Column(db.Integer,nullable=False)
+    town=db.Column(db.Text,nullable=False)
+    street=db.Colum(db.Text,nullable=False)
+    home_number=db.Column(db.Text,nullable=False)
+    apartment_number=db.Column(db.Text,nullable=False)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
 
 class Users(db.Model):
     user_id = db.Column(db.Integer,primary_key=True)
