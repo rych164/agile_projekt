@@ -1,4 +1,3 @@
-import sqlite3
 
 from flask import Flask, redirect, render_template, url_for, request, session
 from flask_session import Session
@@ -25,26 +24,6 @@ def after_request(response):
     return response
 
 
-class Menu(db.Model):
-    menu_id=db.Column(db.Integer,primary_key=True)
-    restaurant=db.Column(db.Text,nullable=False)
-    produtc=db.Column(db.Text,nullable=False)
-    prize=db.Column(db.Real,nullable=False)
-
-    def __repr__(self):
-        return '<Task %r>' % self.id
-class Orders(db.Model):
-    order_id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,foreign_key=True)
-    phone_number=db.Column(db.Integer,nullable=False)
-    town=db.Column(db.Text,nullable=False)
-    street=db.Colum(db.Text,nullable=False)
-    home_number=db.Column(db.Text,nullable=False)
-    apartment_number=db.Column(db.Text,nullable=False)
-
-    def __repr__(self):
-        return '<Task %r>' % self.id
-
 class Users(db.Model):
     user_id = db.Column(db.Integer,primary_key=True)
     name=db.Column(db.String(200),nullable=False)
@@ -52,6 +31,29 @@ class Users(db.Model):
     email=db.Column(db.String(200),nullable=False)
     password=db.Column(db.String(200),nullable=False)
     date_time_of_account_creation=db.Column(db.DateTime, default=datetime.utcnow())
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
+
+class Menu(db.Model):
+    menu_id=db.Column(db.Integer,primary_key=True)
+    restaurant=db.Column(db.Text,nullable=False)
+    product=db.Column(db.Text,nullable=False)
+    prize=db.Column(db.REAL,nullable=False)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
+
+class Orders(db.Model):
+    order_id = db.Column(db.Integer,primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(Users.user_id))
+    phone_number=db.Column(db.Integer,nullable=False)
+    town=db.Column(db.Text,nullable=False)
+    street=db.Column(db.Text,nullable=False)
+    home_number=db.Column(db.Text,nullable=False)
+    apartment_number=db.Column(db.Text,nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
