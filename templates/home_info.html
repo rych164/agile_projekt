@@ -1,1 +1,27 @@
-
+<html lang="en">
+<head>
+<title>Informacje dostawy</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+<h2> <a href="#"> Głodny.pl</a> </h2>
+</header>
+<nav>
+		<a href="register"> Stwórz konto! </a>
+		<a href="login"> Zaloguj się! </a>
+	</nav>
+<div class="dostawa">
+    <form method="post" action="/home_info">
+	<label><b>Numer telefonu</label><br /><input name="numer_tel" id="numer_tel" type="number" required /><br /><br />
+	<label><b>Miasto</label><br /><input name="miasto" id="miasto" type="text" required /><br /><br />
+	<label><b>Kod pocztowy</label><br /><input name="kod_pocztowy" type="text" required /><br /><br />
+	<label><b>Nazwa ulicy</label><br /><input name="ulica" type="text" required /><br /><br />
+	<label><b>Numer domu/mieszkania</label><br /><input name="numer_domu" type="text" required /><br /><br />
+	<label><b>Szczegóły dla dostawcy</label><br /><input name="szczegoly" id="szczegoly" type="text" required /><br /><br />
+  <button type="submit">dalej</button><br />
+</form>
+</div>
+</body>
+</html>
