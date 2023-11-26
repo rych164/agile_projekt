@@ -6,7 +6,7 @@
 </head>
 <body>
 <header>
-<h2> <a href="#"> Głodny.pl</a> </h2>
+<a href="index.html"><img src="Godny.pl.png"></img></a>
 </header>
 <nav>
 		<a href="register"> Stwórz konto! </a>
@@ -14,13 +14,13 @@
 	</nav>
 <div class="dostawa">
     <form method="post" action="/home_info">
-	<label><b>Numer telefonu</label><br /><input name="numer_tel" id="numer_tel" type="number" required /><br /><br />
+	<label><b>Numer telefonu</label><br /><input name="numer_tel" id="numer_tel" type="tel" attern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required /> <br /><br />
 	<label><b>Miasto</label><br /><input name="miasto" id="miasto" type="text" required /><br /><br />
 	<label><b>Kod pocztowy</label><br /><input name="kod_pocztowy" type="text" required /><br /><br />
 	<label><b>Nazwa ulicy</label><br /><input name="ulica" type="text" required /><br /><br />
 	<label><b>Numer domu/mieszkania</label><br /><input name="numer_domu" type="text" required /><br /><br />
 	<label><b>Szczegóły dla dostawcy</label><br /><input name="szczegoly" id="szczegoly" type="text" required /><br /><br />
-  <button type="submit" href="end.html">dalej</button><br />
+	<button type="submit" formaction="end.html">Dalej</button>
 </form>
 </div>
 </body>
