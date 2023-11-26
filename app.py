@@ -150,6 +150,10 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/basket")
+def basket():
+    return render_template("basket.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
