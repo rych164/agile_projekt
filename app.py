@@ -65,7 +65,15 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    restaurants = db.session.query(Menu).all()
+    menu = []
+    for item in restaurants:
+        menu.append({
+            'restaurant': item.restaurant,
+            'product': item.product,
+            'price': item.price
+        })
+    return render_template("index.html", menu=menu)
 
 
 @app.route("/login", methods=["GET", "POST"])
