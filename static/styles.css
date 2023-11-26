@@ -8,6 +8,7 @@ body {
 	background-color: #DC143C;
 }
 header {
+	position: relative;
 	background-color:#fff;
 	text-align: center;
 	padding: 20px;
@@ -89,4 +90,10 @@ footer {
 .dostawa form label{
 	text-decoration:bold;
 	
+}
+header a{
+	position:relative;
+}
+header a img {
+	position:relative;
 }
