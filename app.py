@@ -194,7 +194,7 @@ def home_info():
 
         return redirect("/")
     else:
-   	return render_template("home_info.html")
+   	    return render_template("home_info.html")
 
 
 if __name__ == "__main__":
