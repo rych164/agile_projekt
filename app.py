@@ -158,6 +158,44 @@ def basket():
 def end():
     return render_template("end.html")
 
+@app.route("/home_info", methods=["POST", "GET"])
+def home_info():
+    if request.method == "POST":
+        numer_tel = request.form.get("numer_tel")
+        miasto = request.form.get("miasto")
+        kod_pocztowy = request.form.get("kod_pocztowy")
+        ulica = request.form.get("ulica")
+        numer_domu = request.form.get("numer_domu")
+        szczegoly = request.form.get("szczegoly")
+
+        if (
+            not numer_tel
+            or not miasto
+            or not kod_pocztowy
+            or not ulica
+            or not numer_domu
+            or not szczegoly
+        ):
+            return error("Wszystkie pola muszą być wypełnione")
+
+
+        user_id = session.get("user_id")  # Pobieranie user_id z sesji
+
+        new_order = Orders(
+            user_id=user_id,
+            phone_number=numer_tel,
+            town=miasto,
+            street=ulica,
+            home_number=numer_domu,
+            apartment_number='',
+        )
+        db.session.add(new_order)
+        db.session.commit()
+
+        return redirect("/")
+    else:
+   	return render_template("home_info.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
