@@ -53,7 +53,7 @@ class Orders(db.Model):
     town=db.Column(db.Text,nullable=False)
     street=db.Column(db.Text,nullable=False)
     home_number=db.Column(db.Text,nullable=False)
-    apartment_number=db.Column(db.Text,nullable=False)
+    details=db.Column(db.Text,nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -191,12 +191,12 @@ def home_info():
             town=miasto,
             street=ulica,
             home_number=numer_domu,
-            apartment_number='',
+            details=szczegoly,
         )
         db.session.add(new_order)
         db.session.commit()
 
-        return redirect("/")
+        return redirect("/end")
     else:
    	    return render_template("home_info.html")
 
