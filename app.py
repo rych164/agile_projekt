@@ -154,6 +154,10 @@ def register():
 def basket():
     return render_template("basket.html")
 
+@app.route("/home_info")
+def home_info():
+    return render_template("home_info.html")
+
 @app.route("/end")
 def end():
     return render_template("end.html")
