@@ -150,9 +150,17 @@ def register():
     else:
         return render_template("register.html")
 
-@app.route("/basket")
+@app.route("/basket", methods=["POST", "GET"])
 def basket():
-    return render_template("basket.html")
+    if "cart" not in session:
+        session["cart"] = []
+    if request.method == "POST":
+        pass
+        #id = request.form.get("id")
+        #if id:
+        #    session["card"].append(id)
+    else:
+        return render_template("basket.html")
 
 @app.route("/home_info")
 def informacje_home():

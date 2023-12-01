@@ -9,10 +9,15 @@
 <a href="/"><img src="static/Godny.pl.png"></img></a>
 </header>
 <nav>
-		<a href="register"> Stwórz konto! </a>
-		<a href="login"> Zaloguj się! </a>
+	{% if session["user_id"] %}
+	<a href="logout"> Wyloguj! </a>
 	<a href="basket"><img src="static/koszyk.png"></a>
-	</nav>
+	{% else %}
+	<a href="register"> Stwórz konto! </a>
+	<a href="login"> Zaloguj się! </a>
+	<a href="basket"><img src="static/koszyk.png"></a>
+	{% endif %}
+</nav>
 <div class="dostawa">
     <form method="post" action="/home_info">
 	<label><b>Numer telefonu</label><br /><input name="numer_tel" id="numer_tel" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required /> <br /><br />
