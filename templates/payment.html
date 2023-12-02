@@ -47,8 +47,31 @@
       <label for="deliveryCard">Karta podarunkowa</label>
     </div>
 	<br />
-	<button type="submit" formaction="end">Dalej</button>
+	<button type="submit" formaction="end.html" id="submitBtn" disabled onclick="submitForm()">Dalej</button>
 </div>
 </form>
+ <script>
+    function submitForm() {
+      var checkboxes = document.querySelectorAll('.payment-option input[type="checkbox"]');
+      var submitBtn = document.getElementById('submitBtn');
+
+      var checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+      if (checked) {
+       window.location.href = 'end';
+      } else {
+        alert('Wybierz co najmniej jedną formę płatności!');
+      }
+    }
+
+    document.addEventListener('change', function() {
+      var checkboxes = document.querySelectorAll('.payment-option input[type="checkbox"]');
+      var submitBtn = document.getElementById('submitBtn');
+
+      var checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+      submitBtn.disabled = !checked;
+    });
+  </script>
+
 </body>
 </html>
