@@ -167,7 +167,7 @@ def informacje_home():
     return render_template("home_info.html")
 	
 @app.route("/payment")
-def informacje_home():
+def payment():
     return render_template("payment.html")
 	
 @app.route("/end")
