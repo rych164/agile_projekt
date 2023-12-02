@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
 <title>Informacje dostawy</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
 </head>
 <body>
@@ -18,11 +18,37 @@
 	<a href="basket"><img src="static/koszyk.png"></a>
 	{% endif %}
 </nav>
-<div class="platnosc">
-  <div class="lista">
-    <input type="kolka" checked id="kolka" />
-    <label for="kolka"></label>
-  </div>
+<form method="post" action="/payment">
+<div class="payment-form">
+    <h2>Wybierz Formę Płatności</h2>
+
+    <div class="payment-option">
+      <input type="checkbox" id="paypal" name="paypal">
+      <label for="paypal">PayPal</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="checkbox" id="creditCard" name="creditCard">
+      <label for="creditCard">Karta Płatnicza</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="checkbox" id="bankTransfer" name="bankTransfer">
+      <label for="bankTransfer">Przelew Bankowy</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="checkbox" id="cashOnDelivery" name="cashOnDelivery">
+      <label for="cashOnDelivery">Płatność gotówką przy odbiorze</label>
+    </div>
+	
+	<div class="payment-option">
+      <input type="checkbox" id="cashOnDelivery" name="deliveryCard">
+      <label for="deliveryCard">Karta podarunkowa</label>
+    </div>
+	<br />
+	<button type="submit" formaction="end">Dalej</button>
 </div>
+</form>
 </body>
 </html>
