@@ -208,7 +208,7 @@ def home_info():
         db.session.add(new_order)
         db.session.commit()
 
-        return redirect("/end")
+        return redirect("/payment")
     else:
    	    return render_template("home_info.html")
 
