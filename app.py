@@ -169,6 +169,10 @@ def informacje_home():
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
+
+@app.route("/all_shops")
+def all_shops():
+    return render_template("all_shops.html")
 	
 @app.route("/end")
 def end():
