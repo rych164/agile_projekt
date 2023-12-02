@@ -165,7 +165,11 @@ def basket():
 @app.route("/home_info")
 def informacje_home():
     return render_template("home_info.html")
-
+	
+@app.route("/payment")
+def informacje_home():
+    return render_template("payment.html")
+	
 @app.route("/end")
 def end():
     return render_template("end.html")
