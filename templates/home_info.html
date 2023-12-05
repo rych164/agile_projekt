@@ -19,15 +19,47 @@
 	{% endif %}
 </nav>
 <div class="dostawa">
-    <form method="post" action="/home_info">
-	<label><b>Numer telefonu</label><br /><input name="numer_tel" id="numer_tel" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" required /> <br /><br />
-	<label><b>Miasto</label><br /><input name="miasto" id="miasto" type="text" required /><br /><br />
-	<label><b>Kod pocztowy</label><br /><input name="kod_pocztowy" type="text" required /><br /><br />
-	<label><b>Nazwa ulicy</label><br /><input name="ulica" type="text" required /><br /><br />
-	<label><b>Numer domu/mieszkania</label><br /><input name="numer_domu" type="text" required /><br /><br />
-	<label><b>Szczegóły dla dostawcy</label><br /><input name="szczegoly" id="szczegoly" type="text" required /><br /><br />
-	<button type="submit">Dalej</button>
-</form>
-</div>
+    <form method="post" action="/home_info" onsubmit="return validateForm()">
+      <label for="numer_tel"><b>Numer telefonu</b></label><br />
+      <input name="numer_tel" id="numer_tel" type="tel" pattern="[0-9]{9}" required /><br /><br />
+      <label for="miasto"><b>Miasto</b></label><br />
+      <input name="miasto" id="miasto" type="text" required /><br /><br />
+      <label for="kod_pocztowy"><b>Kod pocztowy</b></label><br />
+      <input name="kod_pocztowy" id="kod_pocztowy" type="text" pattern="\d{2}-\d{3}" required /><br /><br />
+      <label for="ulica"><b>Nazwa ulicy</b></label><br />
+      <input name="ulica" id="ulica" type="text" required /><br /><br />
+      <label for="numer_domu"><b>Numer domu/mieszkania</b></label><br />
+      <input name="numer_domu" id="numer_domu" type="text" pattern="\d+-\d+" required /><br /><br />
+      <label for="szczegoly"><b>Szczegóły dla dostawcy</b></label><br />
+      <input name="szczegoly" id="szczegoly" type="text" required /><br /><br />
+      <button type="submit">Dalej</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var numer_tel = document.getElementById("numer_tel").value;
+      if (numer_tel.length !== 9 || isNaN(numer_tel)) {
+        alert("Numer telefonu musi składać się z 9 cyfr.");
+        return false;
+      }
+
+      var kod_pocztowy = document.getElementById("kod_pocztowy").value;
+      var kodPocztowyRegex = /^\d{2}-\d{3}$/;
+      if (!kodPocztowyRegex.test(kod_pocztowy)) {
+        alert("Wprowadź poprawny kod pocztowy (np. 12-345).");
+        return false;
+      }
+
+        var numerDomuInput = document.getElementsByName('numer_domu')[0];
+        if (!/^[0-9]+\/[0-9]+$/.test(numerDomuInput.value)) {
+            alert('Nieprawidłowy format numeru domu/mieszkania. Poprawny format to X/Y.');
+            event.preventDefault();
+            return;
+        }
+
+      return true;
+    }
+  </script>
 </body>
 </html>

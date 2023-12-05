@@ -165,7 +165,6 @@ def basket():
 @app.route("/home_info")
 def informacje_home():
     return render_template("home_info.html")
-	
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
