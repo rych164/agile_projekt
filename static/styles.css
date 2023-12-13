@@ -16,7 +16,7 @@ header {
 }
 header a img:hover {
   filter: grayscale(0%);
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 header h2 a {
     text-decoration:none;
@@ -56,11 +56,19 @@ article {
 	margin-top:20px;
 	
 }
-.card {
+article .card {
 	background-color:#fff;
 	padding:20px;
 	margin-top: 20px;
-	
+	margin-right: 20px;
+	margin-left: 20px;
+	width: 45%;
+	float: left;
+	transition: transform .2s;
+}
+article .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.05);
 }
 aside {
 	float:right;
