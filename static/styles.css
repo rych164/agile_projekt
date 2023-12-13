@@ -41,20 +41,20 @@ nav a {
 nav a:hover {
 	background-color:#ddd;
 	color:#000;
-	
 }
 section {
 	overflow:hidden;
+	width:100%;
 }
 article {
 	float:left;
-	width:70%;
+	width:100%;
 }
 .cardImg {
 	background-color: #fff;
 	padding:20px;
 	margin-top:20px;
-	
+
 }
 article .card {
 	background-color:#fff;
@@ -62,19 +62,13 @@ article .card {
 	margin-top: 20px;
 	margin-right: 20px;
 	margin-left: 20px;
-	width: 45%;
+	width: 30%;
 	float: left;
 	transition: transform .2s;
 }
 article .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transform: scale(1.05);
-}
-aside {
-	float:right;
-	width:25%;
-	background-color:#f1f1f1;
-	padding-left:20px;
 }
 footer {
 	padding:20px;
