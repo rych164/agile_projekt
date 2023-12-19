@@ -5,7 +5,7 @@
 body {
 	font-family:arial;
 	padding: 20px;
-	background-color: #DC143C;
+	background-color: #CDB891;
 }
 header {
 	position: relative;
@@ -107,3 +107,34 @@ header a img {
     transition: transform .2s;
 	position:relative;
 }
+.payment-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	  margin-top:20px;
+}
+ .payment-form h2 {
+	 margin-left: 40%;
+	 
+}
+.payment-option {
+	display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+}
+
+.payment-option input {
+	margin-right: 10px;
+	margin-left: 45%;
+}
+.payment-form button {
+	 margin-left: 48%;	
+}
+section {
+	margin-left: 25%;
+}
+.shops{
+	margin-right: 73%;
+}
+
