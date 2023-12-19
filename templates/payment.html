@@ -47,31 +47,27 @@
       <label for="deliveryCard">Karta podarunkowa</label>
     </div>
 	<br />
-	<button type="submit" id="submitBtn" disabled onclick="submitForm()">Dalej</button>
+	<button type="submit" id="submitBtn">Dalej</button>
 </div>
 </form>
  <script>
-    function submitForm() {
-      var checkboxes = document.querySelectorAll('.payment-option input[type="checkbox"]');
-      var submitBtn = document.getElementById('submitBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            var submitBtn = document.getElementById('submitBtn');
+            var paymentOptions = document.getElementsByName('payment');
 
-      var checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+            function updateSubmitButton() {
+                var selectedOptions = Array.from(paymentOptions).filter(option => option.checked);
+                submitBtn.disabled = selectedOptions.length !== 1;
+            }
 
-      if (checked) {
-       window.location.href = 'end';
-      } else {
-        alert('Wybierz co najmniej jedną formę płatności!');
-      }
-    }
+            paymentOptions.forEach(function(option) {
+                option.addEventListener('change', updateSubmitButton);
+            });
 
-    document.addEventListener('change', function() {
-      var checkboxes = document.querySelectorAll('.payment-option input[type="checkbox"]');
-      var submitBtn = document.getElementById('submitBtn');
-
-      var checked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-      submitBtn.disabled = !checked;
-    });
-  </script>
+            // Wywołanie funkcji po załadowaniu strony, aby zainicjować stan przycisku
+            updateSubmitButton();
+        });
+    </script>
 
 </body>
 </html>
