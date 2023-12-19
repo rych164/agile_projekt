@@ -9,11 +9,14 @@ body {
 }
 header {
 	position: relative;
-	background-color:#fff;
 	text-align: center;
 	padding: 20px;
 	font-size:30px;
 	
+}
+header a img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 header h2 a {
     text-decoration:none;
@@ -38,32 +41,34 @@ nav a {
 nav a:hover {
 	background-color:#ddd;
 	color:#000;
-	
 }
 section {
 	overflow:hidden;
+	width:100%;
 }
 article {
 	float:left;
-	width:70%;
+	width:100%;
 }
 .cardImg {
 	background-color: #fff;
 	padding:20px;
 	margin-top:20px;
-	
+
 }
-.card {
+article .card {
 	background-color:#fff;
 	padding:20px;
 	margin-top: 20px;
-	
+	margin-right: 20px;
+	margin-left: 20px;
+	width: 30%;
+	float: left;
+	transition: transform .2s;
 }
-aside {
-	float:right;
-	width:25%;
-	background-color:#f1f1f1;
-	padding-left:20px;
+article .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.05);
 }
 footer {
 	padding:20px;
@@ -98,6 +103,8 @@ header a{
 	position:relative;
 }
 header a img {
+    filter: grayscale(100%);
+    transition: transform .2s;
 	position:relative;
 }
 .payment-form {
