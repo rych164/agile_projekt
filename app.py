@@ -53,7 +53,7 @@ class Orders(db.Model):
     town=db.Column(db.Text,nullable=False)
     street=db.Column(db.Text,nullable=False)
     home_number=db.Column(db.Text,nullable=False)
-    apartment_number=db.Column(db.Text,nullable=False)
+    details=db.Column(db.Text,nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -158,6 +158,72 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/basket", methods=["POST", "GET"])
+def basket():
+    if "cart" not in session:
+        session["cart"] = []
+    if request.method == "POST":
+        pass
+        #id = request.form.get("id")
+        #if id:
+        #    session["card"].append(id)
+    else:
+        return render_template("basket.html")
+
+@app.route("/home_info")
+def informacje_home():
+    return render_template("home_info.html")
+@app.route("/payment")
+def payment():
+    return render_template("payment.html")
+
+@app.route("/all_shops")
+def all_shops():
+    return render_template("all_shops.html")
+	
+@app.route("/end")
+def end():
+    return render_template("end.html")
+
+@app.route("/home_info", methods=["POST", "GET"])
+def home_info():
+    if request.method == "POST":
+        numer_tel = request.form.get("numer_tel")
+        miasto = request.form.get("miasto")
+        kod_pocztowy = request.form.get("kod_pocztowy")
+        ulica = request.form.get("ulica")
+        numer_domu = request.form.get("numer_domu")
+        szczegoly = request.form.get("szczegoly")
+
+        if (
+            not numer_tel
+            or not miasto
+            or not kod_pocztowy
+            or not ulica
+            or not numer_domu
+            or not szczegoly
+        ):
+            return error("Wszystkie pola muszą być wypełnione")
+
+
+        user_id = session.get("user_id")  # Pobieranie user_id z sesji
+
+        new_order = Orders(
+            user_id=user_id,
+            phone_number=numer_tel,
+            town=miasto,
+            street=ulica,
+            home_number=numer_domu,
+            details=szczegoly,
+        )
+        db.session.add(new_order)
+        db.session.commit()
+
+        return redirect("/payment")
+    else:
+   	    return render_template("home_info.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
+

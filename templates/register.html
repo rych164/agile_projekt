@@ -1,16 +1,36 @@
 <!DOCTYPE HTML>
+<html lang="en">
 <head>
-  <title>REJESTRACJA</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="styles.css">
+<title>Informacje dostawy</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <meta charset="UTF-8">
 </head>
 <body>
-<form method="post" action="/register">
+<header>
+<a href="/"><img src="static/Godny.pl.png"></img></a>
+</header>
+<nav>
+	{% if session["user_id"] %}
+    <a href="logout"> Wyloguj! </a>
+    <a href="basket"><img src="static/koszyk.png"></a>
+    {% else %}
+    <a href="register"> Stwórz konto! </a>
+    <a href="login"> Zaloguj się! </a>
+    <a href="basket"><img src="static/koszyk.png"></a>
+    {% endif %}
+</nav>
+<div class="dostawa">
+    <form method="post" action="/register">
   <label>Imię</label><br /><input name="Imie" id="Imie" type="text" /><br /><br />
   <label>Nazwisko</label><br /><input name="Nazwisko" type="text" /><br /><br />
   <label>E-mail</label><br /><input name="E-mail" type="email" /><br /><br />
   <label>Hasło</label><br /><input name="Haslo" type="password" /><br /><br />
-  <label>Powtórz hasło</label><br /><input name="HasloPowtorz" type="password" /><br /><br />  
+  <label>Powtórz hasło</label><br /><input name="HasloPowtorz" type="password" /><br /><br />
   <button type="submit">Zarejestruj się</button><br />
 </form>
+</div>
+<footer>
+    <h2> Wersja 0.2</h2>
+</footer>
 </body>
+</html>

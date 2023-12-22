@@ -5,14 +5,18 @@
 body {
 	font-family:arial;
 	padding: 20px;
-	background-color: #DC143C;
+	background-color: #CDB891;
 }
 header {
-	background-color:#fff;
+	position: relative;
 	text-align: center;
 	padding: 20px;
 	font-size:30px;
 	
+}
+header a img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 header h2 a {
     text-decoration:none;
@@ -22,6 +26,9 @@ nav {
 	overflow:hidden;
 	background-color:#333;
 }
+nav img{
+    width: 25px;
+    height: 25px;}
 nav a {
 	float:right;
 	display:block;
@@ -34,32 +41,34 @@ nav a {
 nav a:hover {
 	background-color:#ddd;
 	color:#000;
-	
 }
 section {
 	overflow:hidden;
+	width:100%;
 }
 article {
 	float:left;
-	width:70%;
+	width:100%;
 }
 .cardImg {
 	background-color: #fff;
 	padding:20px;
 	margin-top:20px;
-	
+
 }
-.card {
+article .card {
 	background-color:#fff;
 	padding:20px;
 	margin-top: 20px;
-	
+	margin-right: 20px;
+	margin-left: 20px;
+	width: 30%;
+	float: left;
+	transition: transform .2s;
 }
-aside {
-	float:right;
-	width:25%;
-	background-color:#f1f1f1;
-	padding-left:20px;
+article .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: scale(1.05);
 }
 footer {
 	padding:20px;
@@ -90,3 +99,42 @@ footer {
 	text-decoration:bold;
 	
 }
+header a{
+	position:relative;
+}
+header a img {
+    filter: grayscale(100%);
+    transition: transform .2s;
+	position:relative;
+}
+.payment-form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	  margin-top:20px;
+}
+ .payment-form h2 {
+	 margin-left: 40%;
+	 
+}
+.payment-option {
+	display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+}
+
+.payment-option input {
+	margin-right: 10px;
+	margin-left: 45%;
+}
+.payment-form button {
+	 margin-left: 48%;	
+}
+section {
+	margin-left: 25%;
+}
+.shops{
+	margin-right: 73%;
+}
+

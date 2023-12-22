@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+<title>Informacje dostawy</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+<header>
+<a href="/"><img src="static/Godny.pl.png"></img></a>
+</header>
+<nav>
+	{% if session["user_id"] %}
+	<a href="logout"> Wyloguj! </a>
+	<a href="basket"><img src="static/koszyk.png"></a>
+	{% else %}
+	<a href="register"> Stwórz konto! </a>
+	<a href="login"> Zaloguj się! </a>
+	<a href="basket"><img src="static/koszyk.png"></a>
+	{% endif %}
+</nav>
+<form method="post" action="/payment">
+<div class="payment-form">
+    <h2>Wybierz Formę Płatności</h2>
+
+    <div class="payment-option">
+      <input type="radio" id="paypal" name="payment">
+      <label for="paypal">PayPal</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="radio" id="creditCard" name="payment">
+      <label for="creditCard">Karta Płatnicza</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="radio" id="bankTransfer" name="payment">
+      <label for="bankTransfer">Przelew Bankowy</label>
+    </div>
+
+    <div class="payment-option">
+      <input type="radio" id="cashOnDelivery" name="payment">
+      <label for="cashOnDelivery">Płatność gotówką przy odbiorze</label>
+    </div>
+	
+	<div class="payment-option">
+      <input type="radio" id="cashOnDelivery" name="payment">
+      <label for="deliveryCard">Karta podarunkowa</label>
+    </div>
+	<br />
+	<button type="submit" id="submitBtn">Dalej</button>
+</div>
+</form>
+ <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var submitBtn = document.getElementById('submitBtn');
+            var paymentOptions = document.getElementsByName('payment');
+
+            function updateSubmitButton() {
+                var selectedOptions = Array.from(paymentOptions).filter(option => option.checked);
+                submitBtn.disabled = selectedOptions.length !== 1;
+            }
+
+            paymentOptions.forEach(function(option) {
+                option.addEventListener('change', updateSubmitButton);
+            });
+
+            // Wywołanie funkcji po załadowaniu strony, aby zainicjować stan przycisku
+            updateSubmitButton();
+        });
+    </script>
+
+</body>
+</html>

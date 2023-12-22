@@ -1,11 +1,26 @@
 <!DOCTYPE HTML>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title> Login</title>
-  <link rel="stylesheet" href="styles.css">
+<title>Informacje dostawy</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <meta charset="UTF-8">
 </head>
 <body>
-  <form method="post" action="/login">
+<header>
+<a href="/"><img src="static/Godny.pl.png"></img></a>
+</header>
+<nav>
+	{% if session["user_id"] %}
+    <a href="logout"> Wyloguj! </a>
+    <a href="basket"><img src="static/koszyk.png"></a>
+    {% else %}
+    <a href="register"> Stwórz konto! </a>
+    <a href="login"> Zaloguj się! </a>
+    <a href="basket"><img src="static/koszyk.png"></a>
+    {% endif %}
+</nav>
+<div class="dostawa">
+    <form method="post" action="/login">
       <label>E-mail</label>
       <br />
       <input name= "E-mail" type= "email" id= "E-mail" required />
@@ -16,10 +31,11 @@
         <input name= "Haslo" type= "password" posiotion = "center" id= "Haslo" required/>
           <br />
           <br />
-            <button type = "submit" id = "Guzior"  name= "Guzior"> Zaloguj się </button>  
+            <button type = "submit" id = "Guzior"  name= "Guzior"> Zaloguj się </button>
   </form>
-  
-    <footer>
-  
-    </footer>
+</div>
+<footer>
+    <h2> Wersja 0.2</h2>
+</footer>
 </body>
+</html>
