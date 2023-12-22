@@ -24,10 +24,10 @@
 				{% for i in range(4) %}
 				<div class="card">
 					<h2> {{ menu[i]['restaurant'] }}</h2>
-					<h5> {{ menu[i]['product'] }} {{ menu[i]['price'] }}</h5>
+					<h5> Nie wiem co tutaj</h5>
 
 				<div class="cardImg" style="height:200px;">Image</div>
-						<p> Polecamy:</p>
+						<p> Polecamy: {{ menu[i]['product'] }} {{ menu[i]['price'] }}</p>
 				</div>
 				{% endfor %}
 			</article>
