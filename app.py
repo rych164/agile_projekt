@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import login_required, error
+from sqlalchemy.sql.expression import func
 
 
 app = Flask(__name__)
@@ -40,7 +41,7 @@ class Menu(db.Model):
     menu_id=db.Column(db.Integer,primary_key=True)
     restaurant=db.Column(db.Text,nullable=False)
     product=db.Column(db.Text,nullable=False)
-    price=db.Column(db.REAL,nullable=False)
+    prize=db.Column(db.REAL,nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -65,15 +66,15 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    #restaurants = db.session.query(Menu).all()
-    #menu = []
-    #for item in restaurants:
-    #    menu.append({
-    #        'restaurant': item.restaurant,
-    #        'product': item.product,
-    #        'price': item.price
-    #    })
-    return render_template("index.html")
+    restaurants = db.session.query(Menu).order_by(func.random()).limit(4).all()
+    menu = []
+    for item in restaurants:
+        menu.append({
+            'restaurant': item.restaurant,
+            'product': item.product,
+            'price': f"{item.prize:.2f} zł"
+        })
+    return render_template("index.html", menu=menu)
 
 
 @app.route("/login", methods=["GET", "POST"])

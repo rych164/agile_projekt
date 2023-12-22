@@ -21,33 +21,15 @@
 	</nav>
 		<section>
 			<article>
+				{% for i in range(4) %}
 				<div class="card">
-					<h2> RESTAURACJA 1</h2>
-					<h5> Adres 1</h5>
-					<div class="cardImg" style="height:200px;">Image</div>
+					<h2> {{ menu[i]['restaurant'] }}</h2>
+					<h5> {{ menu[i]['product'] }} {{ menu[i]['price'] }}</h5>
+
+				<div class="cardImg" style="height:200px;">Image</div>
 						<p> Polecamy:</p>
 				</div>
-				<div class="card">
-					<h2> RESTAURACJA 2</h2>
-					<h5> Adres 2</h5>
-
-				<div class="cardImg" style="height:200px;">Image</div>
-					<p>Polecamy:</p>
-				</div>
-				<div class="card">
-					<h2> RESTAURACJA 3</h2>
-					<h5> Adres 3</h5>
-
-				<div class="cardImg" style="height:200px;">Image</div>
-					<p>Polecamy:</p>
-				</div>
-				<div class="card">
-					<h2> RESTAURACJA 4</h2>
-					<h5> Adres 4</h5>
-
-				<div class="cardImg" style="height:200px;">Image</div>
-					<p>Polecamy:</p>
-				</div>
+				{% endfor %}
 			</article>
 		</section>
 		<footer>
