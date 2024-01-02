@@ -7,19 +7,23 @@
 </head>
 <body>
 <header>
-<a href="/"><img src="static/Godny.pl.png"></a>
-</header>
-<nav>
-	{% if session["user_id"] %}
-    <a href="logout"> Wyloguj! </a>
-    <a href="basket"><img src="static/koszyk.png"></a>
-    {% else %}
-    <a href="register"> Stwórz konto! </a>
-    <a href="login"> Zaloguj się! </a>
-    <a href="basket"><img src="static/koszyk.png"></a>
-    {% endif %}
-</nav>
+	<a href="/"><img src="static/Godny.pl.png"></a>
+	</header>
+	<nav>
+		{% if session["user_id"] %}
+		<a href="logout"> Wyloguj! </a>
+		<a href="basket"><img src="static/koszyk.png"></a>
+		{% else %}
+		<a href="register"> Stwórz konto! </a>
+		<a href="login"> Zaloguj się! </a>
+		<a href="basket"><img src="static/koszyk.png"></a>
+
+        {% endif %}
+	</nav>
 <div class="dostawa">
+    <script type="text/javascript">
+
+    </script>
     <form method="post" action="/register">
   <label>Imię</label><br /><input name="Imie" id="Imie" type="text" /><br /><br />
   <label>Nazwisko</label><br /><input name="Nazwisko" type="text" /><br /><br />
@@ -32,5 +36,6 @@
 <footer>
     <h2> Wersja 0.5</h2>
 </footer>
+
 </body>
 </html>
