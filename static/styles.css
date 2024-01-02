@@ -72,6 +72,27 @@ article .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transform: scale(1.05);
 }
+
+article .koszykowe {
+	background-color:#fff;
+	margin-top: 5px;
+	padding:20px;
+	width: 30%;
+	margin-left: auto;
+    margin-right: auto;
+	transition: transform .2s;
+
+}
+article .tytul{
+	text-align:center;
+	color:#220300;
+	padding:20px;
+	margin-top: 20px;
+	width: 30%;
+	margin-left: auto;
+    margin-right: auto;
+	transition: transform .2s;
+}
 footer {
 	padding:20px;
 	text-align: center;
