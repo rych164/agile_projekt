@@ -34,13 +34,15 @@ nav a {
 	display:block;
 	color:#F0E68C;
 	text-align:center;
-	padding:14px 16px;
+	padding:15px 15px;
 	text-decoration:none;
-	
+	margin-top:3px;
 }
 nav a:hover {
 	background-color:#ddd;
 	color:#000;
+	margin-top:1.5px;
+	margin-bottom:1.5px;
 }
 section {
 	overflow:hidden;
@@ -69,6 +71,27 @@ article .card {
 article .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     transform: scale(1.05);
+}
+
+article .koszykowe {
+	background-color:#fff;
+	margin-top: 6px;
+	padding:20px;
+	width: 30%;
+	margin-left: auto;
+    margin-right: auto;
+	transition: transform .2s;
+
+}
+article .tytul{
+	text-align:center;
+	color:#220300;
+	padding:20px;
+	margin-top: 20px;
+	width: 30%;
+	margin-left: auto;
+    margin-right: auto;
+	transition: transform .2s;
 }
 footer {
 	padding:20px;
@@ -130,9 +153,6 @@ header a img {
 }
 .payment-form button {
 	 margin-left: 48%;	
-}
-section {
-	margin-left: 25%;
 }
 .shops{
 	margin-right: 73%;
