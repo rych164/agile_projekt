@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import login_required, error
+from sqlalchemy.sql.expression import func
 
 
 app = Flask(__name__)
@@ -65,7 +66,15 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    restaurants = db.session.query(Menu).order_by(func.random()).limit(4).all()
+    menu = []
+    for item in restaurants:
+        menu.append({
+            'restaurant': item.restaurant,
+            'product': item.product,
+            'price': f"{item.prize:.2f} zł"
+        })
+    return render_template("index.html", menu=menu)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -155,27 +164,28 @@ def basket():
     if "cart" not in session:
         session["cart"] = []
     if request.method == "POST":
-        pass
         #id = request.form.get("id")
         #if id:
         #    session["card"].append(id)
+        return redirect("/home_info")
     else:
         return render_template("basket.html")
 
-@app.route("/home_info")
-def informacje_home():
-    return render_template("home_info.html")
+
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
 
+
 @app.route("/all_shops")
 def all_shops():
     return render_template("all_shops.html")
-	
+
+
 @app.route("/end")
 def end():
     return render_template("end.html")
+
 
 @app.route("/home_info", methods=["POST", "GET"])
 def home_info():
@@ -197,7 +207,6 @@ def home_info():
         ):
             return error("Wszystkie pola muszą być wypełnione")
 
-
         user_id = session.get("user_id")  # Pobieranie user_id z sesji
 
         new_order = Orders(
@@ -213,7 +222,7 @@ def home_info():
 
         return redirect("/payment")
     else:
-   	    return render_template("home_info.html")
+        return render_template("home_info.html")
 
 
 if __name__ == "__main__":
