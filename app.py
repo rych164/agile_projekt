@@ -72,7 +72,8 @@ def index():
         menu.append({
             'restaurant': item.restaurant,
             'product': item.product,
-            'price': f"{item.prize:.2f} zł"
+            'price': f"{item.prize:.2f} zł",
+            'id': item.menu_id,
         })
     return render_template("index.html", menu=menu)
 
@@ -159,22 +160,42 @@ def register():
     else:
         return render_template("register.html")
 
+
 @app.route("/basket", methods=["POST", "GET"])
 def basket():
     if "cart" not in session:
         session["cart"] = []
     if request.method == "POST":
-        #id = request.form.get("id")
-        #if id:
-        #    session["card"].append(id)
-        return redirect("/home_info")
+        item_id = request.form.get("id")
+        if item_id:
+            session["cart"].append(item_id)
+
+    items = []
+    it_id = []
+    sum = 0
+    for i in range(len(session['cart'])):
+        query = db.session.query(Menu).filter(Menu.menu_id == session['cart'][i]).first()
+        if query:
+            it = query.product
+            price = query.prize
+            sum += price
+            items.append(f"{it} - {price}")
+            it_id.append(query.menu_id)
     else:
-        return render_template("basket.html")
+        return render_template("basket.html", items=items, sum=sum, it_id=it_id)
 
 
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
+
+
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    if request.method == 'POST':
+        item = request.form.get("id")
+        session['cart'].remove(item)
+        return redirect('/basket')
 
 
 @app.route("/all_shops")
