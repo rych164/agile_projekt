@@ -171,6 +171,7 @@ def basket():
             session["cart"].append(item_id)
 
     items = []
+    it_id = []
     sum = 0
     for i in range(len(session['cart'])):
         query = db.session.query(Menu).filter(Menu.menu_id == session['cart'][i]).first()
@@ -179,13 +180,22 @@ def basket():
             price = query.prize
             sum += price
             items.append(f"{it} - {price}")
+            it_id.append(query.menu_id)
     else:
-        return render_template("basket.html", items=items, sum=sum)
+        return render_template("basket.html", items=items, sum=sum, it_id=it_id)
 
 
 @app.route("/payment")
 def payment():
     return render_template("payment.html")
+
+
+@app.route('/remove_from_cart', methods=['POST'])
+def remove_from_cart():
+    if request.method == 'POST':
+        item = request.form.get("id")
+        session['cart'].remove(item)
+        return redirect('/basket')
 
 
 @app.route("/all_shops")

@@ -30,7 +30,10 @@
 						<li>{{ items[i] }} zł</li>
 						{% endif %}
 					</ul>
-					<button class="przycisk">Usuń z koszyka</button>
+					<form action="/remove_from_cart" method="post">
+					<input name="id" type="hidden" value={{it_id[i]}}>
+					<button type="submit" class="przycisk">Usuń z koszyka</button>
+					</form>
 				</div>
 				{% endfor %}
 			</article>
