@@ -184,6 +184,7 @@ article h3{
 }
 article p{
   font-size: 20px;
+}
 .promo {
 	background-color:#fff;
 	margin-top: 6px;
@@ -213,8 +214,6 @@ footer {
     display: inline-block;
     vertical-align: top;
     margin: 0 20px; /* Zmniejszyłem marginesy */
-}
-  text-align: center;
 }
 .socials {
     margin-left: 0;
