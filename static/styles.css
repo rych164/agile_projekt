@@ -97,12 +97,6 @@ article .tytul{
     margin-right: auto;
 	transition: transform .2s;
 }
-footer {
-	padding:20px;
-	text-align: center;
-	background-color: #333;
-	margin-top: 20px;
-}
 @media(max-width:800px) {
 	article, aside {
 		width:80%;
@@ -198,39 +192,55 @@ header a img {
 }
 
 
-
-footer div {
-    display: inline-block;
-    margin: 0 20px;
-}
-footer .contact-section {
-    text-align: left;
-}
-footer .social-section {
+footer {
+    padding: 20px;
     text-align: center;
+    background-color: #333;
+    margin-top: 20px;
 }
-footer .social-icons {
+
+.contact, .socials {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px; /* Zmniejszyłem marginesy */
+}
+
+.socials {
+    margin-left: 0;
+}
+
+.contact img, .socials img {
+    vertical-align: middle;
+}
+
+.contact p, .socials h3, .social-icons li {
+    margin: 0;
+}
+
+.social-icons {
     list-style: none;
     padding: 0;
 }
-footer .social-icons li {
+
+.social-icons li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 20px; /* Zwiększyłem margines między ikonami */
 }
-footer .social-icons a {
+
+.social-icons a {
     text-decoration: none;
     color: #CDB891;
     font-size: 20px;
 }
-.socials{
-	margin-left: 70%;
-	color: #CDB891;
 
+.tel, .mail {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 400px; /* Zwiększyłem margines między obrazkami "mail1" i "phone1" */
 }
-.contact{
-	color: #CDB891;
-	cursor: default;
-	text-decoration:none;
+
+.tel p, .mail p {
+    font-size: 120%;
 }
 .button1{
 	margin-left: 47%;
