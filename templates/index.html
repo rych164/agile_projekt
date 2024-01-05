@@ -27,7 +27,10 @@
 					<h5> Nie wiem co tutaj</h5>
 
 				<div class="cardImg" style="height:200px;">Image</div>
-						<p> Polecamy: {{ menu[i]['product'] }} {{ menu[i]['price'] }}</p>
+					<div class="przyciski">
+			                        <p> Polecamy: {{ menu[i]['product'] }} {{ menu[i]['price'] }}</p>
+			                        <button class="przycisk">Dodaj do koszyka</button>
+	                    		</div>
 				</div>
 				{% endfor %}
 			</article>
