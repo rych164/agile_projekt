@@ -21,15 +21,18 @@
 	</nav>
 		<section>
 			<article>
-				{% for i in range(4) %}
+				{% for i in range(3) %}
 				<div class="card">
 					<h2> {{ menu[i]['restaurant'] }}</h2>
 					<h5> Nie wiem co tutaj</h5>
 
 				<div class="cardImg" style="height:200px;">Image</div>
 					<div class="przyciski">
+									<form action="basket" method="post">
 			                        <p> Polecamy: {{ menu[i]['product'] }} {{ menu[i]['price'] }}</p>
-			                        <button class="przycisk">Dodaj do koszyka</button>
+									<input name="id" type="hidden" value={{menu[i]['id']}}>
+			                        <button type="submit" class="przycisk">Dodaj do koszyka</button>
+									</form>
 	                    		</div>
 				</div>
 				{% endfor %}

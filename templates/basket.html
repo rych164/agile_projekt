@@ -23,34 +23,16 @@
 				<div class="tytul">
 						<h2> Twoje zamówienie: </h2>
 					</div>
-				<div class="koszykowe">
-
-					<h5> Restauracja 1:</h5>
+				{% for i in range(session['cart']|length) %}
+					<div class="koszykowe">
 					<ul>
-						<li>danie 1</li>
-						<li>danie 2</li>
+						{% if session['cart'] %}
+						<li>{{ items[i] }} zł</li>
+						{% endif %}
 					</ul>
 					<button class="przycisk">Usuń z koszyka</button>
 				</div>
-				<div class="koszykowe">
-
-					<h5> Restauracja 2:</h5>
-					<ul>
-						<li>danie 1</li>
-						<li>danie 2</li>
-					</ul>
-					<button class="przycisk">Usuń z koszyka</button>
-				</div>
-				<div class="koszykowe">
-
-					<h5> Restauracja 3:</h5>
-					<ul>
-						<li>danie 1</li>
-						<li>danie 2</li>
-					</ul>
-					<button class="przycisk">Usuń z koszyka</button>
-				</div>
-
+				{% endfor %}
 			</article>
 
 		</section>
