@@ -91,6 +91,7 @@ article .koszykowe {
 
 }
 article .tytul{
+	background: #dddddd;
 	text-align:center;
 	color:#220300;
 	padding:20px;
@@ -99,12 +100,6 @@ article .tytul{
 	margin-left: auto;
     margin-right: auto;
 	transition: transform .2s;
-}
-footer {
-	padding:20px;
-	text-align: center;
-	background-color: #ddd;
-	margin-top: 20px;
 }
 @media(max-width:800px) {
 	article, aside {
@@ -162,7 +157,7 @@ header a img {
 	 margin-left: 48%;	
 }
 .shops{
-	margin-right: 73%;
+	margin-right: 65%;
 }
 .przyciski {
     display: flex;
@@ -189,6 +184,75 @@ article h3{
 }
 article p{
   font-size: 20px;
-  text-align: center;
+.promo {
+	background-color:#fff;
+	margin-top: 6px;
+	padding:20px;
+	width: 30%;
+	margin-left: auto;
+    margin-right: auto;
+	transition: transform .2s;
 
+}
+.promo .opcje {
+	text-align: center;
+}
+.promo .opcje select {
+	text-align: center;
+}
+
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    margin-top: 20px;
+}
+
+.contact, .socials {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 20px; /* Zmniejszyłem marginesy */
+}
+  text-align: center;
+}
+.socials {
+    margin-left: 0;
+}
+
+.contact img, .socials img {
+    vertical-align: middle;
+}
+
+.contact p, .socials h3, .social-icons li {
+    margin: 0;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin-right: 20px; /* Zwiększyłem margines między ikonami */
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #CDB891;
+    font-size: 20px;
+}
+
+.tel, .mail {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 400px; /* Zwiększyłem margines między obrazkami "mail1" i "phone1" */
+}
+
+.tel p, .mail p {
+    font-size: 120%;
+}
+.button1{
+	margin-left: 47%;
 }
