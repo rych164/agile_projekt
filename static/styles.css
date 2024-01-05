@@ -97,7 +97,7 @@ article .tytul{
 footer {
 	padding:20px;
 	text-align: center;
-	background-color: #ddd;
+	background-color: #333;
 	margin-top: 20px;
 }
 @media(max-width:800px) {
@@ -156,7 +156,7 @@ header a img {
 	 margin-left: 48%;	
 }
 .shops{
-	margin-right: 73%;
+	margin-right: 65%;
 }
 
 .promo {
@@ -174,4 +174,43 @@ header a img {
 }
 .promo .opcje select {
 	text-align: center;
+}
+
+
+
+footer div {
+    display: inline-block;
+    margin: 0 20px;
+}
+footer .contact-section {
+    text-align: left;
+}
+footer .social-section {
+    text-align: center;
+}
+footer .social-icons {
+    list-style: none;
+    padding: 0;
+}
+footer .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+}
+footer .social-icons a {
+    text-decoration: none;
+    color: #CDB891;
+    font-size: 20px;
+}
+.socials{
+	margin-left: 70%;
+	color: #CDB891;
+
+}
+.contact{
+	color: #CDB891;
+	cursor: default;
+	text-decoration:none;
+}
+button{
+	margin-left: 47%;
 }
