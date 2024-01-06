@@ -1,10 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
+<title>Informacje dostawy</title>
+    <link rel="stylesheet" href="static/styles.css">
     <meta charset="UTF-8">
-    <title>login_restaurant</title>
 </head>
 <body>
-
+{%include 'navbar.html'%}
+<div class="dostawa">
+    <form method="post" action="/login">
+      <label>E-mail</label>
+      <br />
+      <input name= "E-mail" type= "email" id= "E-mail" required />
+        <br />
+        <br />
+        <label>Hasło</label>
+        <br />
+        <input name= "Haslo" type= "password" position = "center" id= "Haslo" required/>
+          <br />
+          <br />
+            <button type = "submit" id = "Guzior"  name= "Guzior"> Zaloguj się </button>
+  </form>
+</div>
+{%include 'footer.html'%}
 </body>
 </html>
