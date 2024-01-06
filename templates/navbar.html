@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>navbar</title>
+</head>
+<body>
+
+<header>
+<a href="/"><img src="static/Godny.pl.png"></img></a>
+</header>
+<nav>
+	{% if session["user_id"] %}
+	<a href="logout"> Wyloguj! </a>
+	<a href="basket"><img src="static/koszyk.png"></a>
+	{% else %}
+	<a href="register"> Stwórz konto! </a>
+	<a href="login"> Zaloguj się! </a>
+	<a href="basket"><img src="static/koszyk.png"></a>
+        <a href="all_shops" class= "shops"> Wszystkie restauracje</a>
+	{% endif %}
+</nav>
+</body>
+</html>
