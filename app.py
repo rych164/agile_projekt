@@ -48,14 +48,14 @@ class Menu(db.Model):
 
 class Restaurants(db.Model):
     restaurant_id = db.Column(db.Integer,primary_key=True)
-    restaurant_name=db.Column(db.Text,nullable=False)
-    restaurant_email=db.Column(db.Text,nullable=False)
-    restaurant_password=db.Column(db.Text,nullable=False)
-    restaurant_phone_number=db.Column(db.Integer,nullable=False)
-    restaurant_town=db.Column(db.Text,nullable=False)
-    restaurant_street=db.Column(db.Text,nullable=False)
-    restaurant_home_number=db.Column(db.Text,nullable=False)
-    restaurant_details=db.Column(db.Text,nullable=False)
+    name=db.Column(db.String(200),nullable=False)
+    email=db.Column(db.String(200),nullable=False)
+    password=db.Column(db.String(200),nullable=False)
+    phone_number=db.Column(db.Integer,nullable=False)
+    town=db.Column(db.String(200),nullable=False)
+    street=db.Column(db.String(200),nullable=False)
+    home_number=db.Column(db.String(200),nullable=False)
+    details=db.Column(db.String(200),nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -231,7 +231,7 @@ def register():
             db.session.commit()
 
 	        # Przekierowuje na strone główną
-            return redirect("/")
+            return render_template("login.html")
     # Tutaj jest metoda GET, czyli wyświetlam template register.html
     else:
         return render_template("register.html")
