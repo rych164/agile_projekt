@@ -48,14 +48,14 @@ class Menu(db.Model):
 
 class Restaurants(db.Model):
     restaurant_id = db.Column(db.Integer,primary_key=True)
-    name=db.Column(db.String(200),nullable=False)
-    email=db.Column(db.String(200),nullable=False)
-    password=db.Column(db.String(200),nullable=False)
-    phone_number=db.Column(db.Integer,nullable=False)
-    town=db.Column(db.String(200),nullable=False)
-    street=db.Column(db.String(200),nullable=False)
-    home_number=db.Column(db.String(200),nullable=False)
-    details=db.Column(db.String(200),nullable=False)
+    restaurant_name=db.Column(db.String(200),nullable=False)
+    restaurant_email=db.Column(db.String(200),nullable=False)
+    restaurant_password=db.Column(db.String(200),nullable=False)
+    restaurant_phone_number=db.Column(db.Integer,nullable=False)
+    restaurant_town=db.Column(db.String(200),nullable=False)
+    restaurant_street=db.Column(db.String(200),nullable=False)
+    restaurant_home_number=db.Column(db.String(200),nullable=False)
+    restaurant_details=db.Column(db.String(200),nullable=False)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -106,18 +106,26 @@ def register_restaurant():
             return error("Hasło musi się zgadzać")
 
         # Tutaj sprawdzam czy email nie jest zajęty
-        restaurant = db.session.query(Restaurants).filter(Restaurants.email == request.form.get("E-mail")).first()
+        restaurant = db.session.query(Restaurants).filter(Restaurants.restaurant_email == request.form.get("E-mail")).first()
         if restaurant:
             return error("Ten adres e-mail jest zajęty!")
 
         else:
             email = request.form.get("E-mail")
-            nazwa = request.form.get("nazwa")
+            nazwa = request.form.get("Nazwa")
             haslo = generate_password_hash(request.form.get("Haslo"))
 
             # dodaje użytkownika do bazy danych
 
-            new_restaurant = Restaurants(name=nazwa, email=email, password=haslo)
+            new_restaurant = Restaurants(restaurant_name=nazwa,
+                                         restaurant_email=email,
+                                         restaurant_password=haslo,
+                                         restaurant_phone_number = '0',
+                                         restaurant_town = '0',
+                                         restaurant_street = '0',
+                                         restaurant_home_number = '0' ,
+                                         restaurant_details = '0',
+            )
             db.session.add(new_restaurant)
             db.session.commit()
 
@@ -131,23 +139,23 @@ def login_restaurant():
     session.clear()
 
     # Metoda POST
-    if request.method == "(POST)":
+    if request.method == "POST":
         # Sprawdzam czy dane zostały podane
         if not request.form.get("E-mail") or not request.form.get("Haslo"):
             return error("Musisz podać e-mail i hasło!")
 
         # Szukam w bazie czy taki użytkownik istnieje i sprawdzam hasło
-        restaurant = db.session.query(Restaurants).filter(Restaurants.email == request.form.get("E-mail")).first()
+        restaurant = db.session.query(Restaurants).filter(Restaurants.restaurant_email == request.form.get("E-mail")).first()
         if not restaurant:
             return error("Niepoprawny e-mail lub hasło!")
 
-        password = check_password_hash(restaurant.password, request.form.get("Haslo"))
+        password = check_password_hash(restaurant.restaurant_password, request.form.get("Haslo"))
 
         if not password:
             return error("Niepoprawny e-mail lub hasło!")
 
         # Zapamiętuje, że użytkownik jest zalagowany
-        user_id = restaurant.user_id
+        user_id = restaurant.restaurant_id
         session["user_id"] = user_id
 
         # Przekierowuje na strone główną
