@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>navbar</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  {% block content %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    {% if session["user_id"] %}
+    <!-- If the user is logged in -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdownLoggedAsUser">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="basket"><img src="static/koszyk.png" alt="Basket"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout">Wyloguj</a>
+        </li>
+      </ul>
+    </div>
+    {% else %}
+    <!-- If the user is not logged in -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="basket"><img src="static/koszyk.png" alt="Basket"></a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown" data-dropdown>
+          <button class="dropdown-heading" data-dropdown-button>Utwórz konto</button>
+          <div class="dropdown-menu">
+            <a class="link" href="register">jako klient</a>
+            <a class="link" href="register_as_restaurant">jako restauracja</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown" data-dropdown>
+          <button class="dropdown-heading" data-dropdown-button>Zaloguj się</button>
+          <div class="dropdown-menu">
+            <a class="link" href="login">jako klient</a>
+            <a class="link" href="login_as_restaurant">jako restauracja</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+{% endblock %}
+
+  </div>
+</body>
+</html>
+
