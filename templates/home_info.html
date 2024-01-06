@@ -22,15 +22,15 @@
 <div class="dostawa">
     <form method="post" action="/home_info" onsubmit="return validateForm()">
       <label for="numer_tel"><b>Numer telefonu</b></label><br />
-      <input name="numer_tel" id="numer_tel" type="tel" pattern="[0-9]{9}"/><br /><br />
+      <input name="numer_tel" id="numer_tel" type="tel"/><br /><br />
       <label for="miasto"><b>Miasto</b></label><br />
       <input name="miasto" id="miasto" type="text"/><br /><br />
       <label for="kod_pocztowy"><b>Kod pocztowy</b></label><br />
-      <input name="kod_pocztowy" id="kod_pocztowy" type="text" pattern="\d{2}-\d{3}"/><br /><br />
+      <input name="kod_pocztowy" id="kod_pocztowy" type="text"/><br /><br />
       <label for="ulica"><b>Nazwa ulicy</b></label><br />
       <input name="ulica" id="ulica" type="text"/><br /><br />
       <label for="numer_domu"><b>Numer domu/mieszkania</b></label><br />
-      <input name="numer_domu" id="numer_domu" type="text" pattern="\d+-\d+"/><br /><br />
+      <input name="numer_domu" id="numer_domu" type="text" /><br /><br />
       <label for="szczegoly"><b>Szczegóły dla dostawcy</b></label><br />
       <input name="szczegoly" id="szczegoly" type="text"/><br /><br />
       <button type="submit">Dalej</button>
@@ -51,12 +51,13 @@
         alert("Wprowadź poprawny kod pocztowy (np. 12-345).");
         return false;
       }
-
         var numerDomuInput = document.getElementsByName('numer_domu')[0];
-        if (!/^[0-9]+\/[0-9]+$/.test(numerDomuInput.value)) {
-            alert('Nieprawidłowy format numeru domu/mieszkania. Poprawny format to X/Y.');
-            event.preventDefault();
-            return;
+        var numerDomuValue = numerDomuInput.value.trim();
+
+        if (!/^\d+$|^\d+\/\d+$/.test(numerDomuValue)) {
+        alert('Nieprawidłowy format numeru domu/mieszkania. Poprawny format to liczba lub liczba/liczba.');
+        event.preventDefault();
+        return;
         }
 
       return true;
