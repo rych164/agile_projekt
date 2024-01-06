@@ -1,19 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<title>Informacje dostawy</title>
+<title>Rejestracja restauracji</title>
     <link rel="stylesheet" href="static/styles.css">
     <meta charset="UTF-8">
 </head>
 <body>
 {%include 'navbar.html'%}
 <div class="dostawa">
-    <script type="text/javascript">
-
-    </script>
-    <form method="post" action="/register">
-  <label>Imię</label><br /><input name="Imie" id="Imie" type="text" /><br /><br />
-  <label>Nazwisko</label><br /><input name="Nazwisko" type="text" /><br /><br />
+    <form method="post" action="/register_restaurant">
+  <label>Nazwa</label><br /><input name="Nazwa" id="Nazwa" type="text" /><br /><br />
   <label>E-mail</label><br /><input name="E-mail" type="email" /><br /><br />
   <label>Hasło</label><br /><input name="Haslo" type="password" /><br /><br />
   <label>Powtórz hasło</label><br /><input name="HasloPowtorz" type="password" /><br /><br />
