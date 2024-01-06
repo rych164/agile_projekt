@@ -16,6 +16,7 @@
 	<a href="register"> Stwórz konto! </a>
 	<a href="login"> Zaloguj się! </a>
 	<a href="basket"><img src="static/koszyk.png"></a>
+        <a href="all_shops" class= "shops"> Wszystkie restauracje</a>
 	{% endif %}
 </nav>
 <form method="post" action="/payment">
@@ -68,6 +69,27 @@
             updateSubmitButton();
         });
     </script>
+<footer>
+    <div class="contact">
+        <div class="tel">
+        <img src="static/phone1.png" />
+            <p><b>+48 123 456 789</b></p>
+        </div>
+        <div class="mail">
+        <img src="static/mail1.png" />
+        <p><b>info@glodny.pl</b></p>
+        </div>
+    </div>
 
+    <div class="socials">
+        <h3>Znajdź nas na naszych social mediach</h3>
+        <ul class="social-icons">
+            <li><a href="https://www.facebook.com"><img src="static/facebook.png" target="_blank"/></a></li>
+            <li><a href="https://www.instagram.com"><img src="static/insta.png" target="_blank"/></a></li>
+            <li><a href="https://www.twitter.com"><img src="static/x.png" target="_blank"/></a></li>
+            <li><a href="https://www.tiktok.com"><img src="static/tik.png" target="_blank"/></a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
