@@ -77,7 +77,25 @@ def index():
         })
     return render_template("index.html", menu=menu)
 
+@app.route("/register_restaurant", methods=["GET", "POST"])
+def register_restaurant():
 
+    "rejestracja restauracji"
+    # Metoda POST
+    if request.method == "POST":
+        pass
+    else:
+        return render_template("register_restaurant.html")
+@app.route("/login_restaurant", methods=["GET", "POST"])
+def login_restaurant():
+    """Logowanie restauracji"""
+    session.clear()
+
+    # Metoda POST
+    if request.method == "(POST)":
+        pass
+    else:
+        return render_template("login_restaurant.html")
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Logowanie użytkownika"""
