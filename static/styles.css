@@ -10,9 +10,16 @@ body {
 header {
 	position: relative;
 	text-align: center;
-	padding: 20px;
-	font-size:30px;
+	padding: .5rem;
+	font-size:15px;
 	
+}
+.header1{
+    float:right;
+	display:block;
+	color:#F0E68C;
+	text-align:center;
+	text-decoration:none;
 }
 header a img:hover {
   filter: grayscale(0%);
@@ -38,9 +45,9 @@ nav a {
 	display:block;
 	color:#F0E68C;
 	text-align:center;
-	padding:15px 15px;
+	padding:5px 55px;
 	text-decoration:none;
-	margin-top:3px;
+	margin-top:0.5rem;
 }
 nav a:hover {
 	background-color:#ddd;
@@ -255,4 +262,40 @@ footer {
 }
 .button1{
 	margin-left: 47%;
+}
+.link{
+	background-color:#333;
+	border:none;
+	tetx-decoration:none;
+	color:#F0E68C;
+	text-align:baseline;
+	font-family:inherit;
+	font-size:inherit;
+	padding:5px 55px;
+	margin-top:0.5rem;
+}
+.link:hover{
+    background-color:#ddd;
+	color:#000;
+	margin-top:1.5px;
+	margin-bottom:1.5px;
+}
+.dropdown {
+    float:right;
+}
+.dropdown-menu{
+    position:absolute
+    lelf:0;
+    top:calc(100% + .25rem);
+    background-color:#333;
+    color:#F0E68C;
+    overflow: hidden;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0rem rgba(0,0,0,.175);
+    opacity: 0;
+
+}
+.dropdown > .link:focus+.dropdown-menu{
+    opacity: 1;
+    transition: all .3ms ease-in-out;
 }

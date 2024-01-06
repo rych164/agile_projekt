@@ -14,10 +14,24 @@
 	<a href="logout"> Wyloguj! </a>
 	<a href="basket"><img src="static/koszyk.png"></a>
 	{% else %}
-	<a href="register"> Stwórz konto! </a>
-	<a href="login"> Zaloguj się! </a>
+	<div class="header1">
+		<div class="dropdown">
+		<button class="link">Stwórz konto!</button>
+			<div class="dropdown-menu">
+				<a href="register"class="link">Jako klient</a>
+				<a href="register_restaurant" class="link">Jako restauracja</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<button class="link">Zaloguj się!</button>
+			<div class="dropdown-menu">
+				<a href="login" class="link">Jako klient</a>
+				<a href="login_restaurant" class="link">Jako restauracja</a>
+			</div>
+		</div>
+	</div>
+	<a href="all_shops" class= "link"> Wszystkie restauracje</a>
 	<a href="basket"><img src="static/koszyk.png"></a>
-        <a href="all_shops" class= "shops"> Wszystkie restauracje</a>
 	{% endif %}
 </nav>
 </body>
