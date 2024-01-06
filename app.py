@@ -46,7 +46,19 @@ class Menu(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
+class Restaurants(db.Model):
+    restaurant_id = db.Column(db.Integer,primary_key=True)
+    restaurant_name=db.Column(db.Text,nullable=False)
+    restaurant_email=db.Column(db.Text,nullable=False)
+    restaurant_password=db.Column(db.Text,nullable=False)
+    restaurant_phone_number=db.Column(db.Integer,nullable=False)
+    restaurant_town=db.Column(db.Text,nullable=False)
+    restaurant_street=db.Column(db.Text,nullable=False)
+    restaurant_home_number=db.Column(db.Text,nullable=False)
+    restaurant_details=db.Column(db.Text,nullable=False)
 
+    def __repr__(self):
+        return '<Task %r>' % self.id
 class Orders(db.Model):
     order_id = db.Column(db.Integer,primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(Users.user_id))
@@ -83,7 +95,34 @@ def register_restaurant():
     "rejestracja restauracji"
     # Metoda POST
     if request.method == "POST":
-        pass
+        if (not request.form.get("Nazwa") or
+                not request.form.get("E-mail") or
+                not request.form.get("Haslo") or
+                not request.form.get("HasloPowtorz")):
+            return error("Wszystkie pola muszą być wypełnione")
+
+        # Sprawdzam czy hasło i potwierdzenie hasła jest poprawne, w przeciwnym razie wyświetlam błąd
+        if request.form.get("HasloPowtorz") != request.form.get("Haslo"):
+            return error("Hasło musi się zgadzać")
+
+        # Tutaj sprawdzam czy email nie jest zajęty
+        restaurant = db.session.query(Restaurants).filter(Restaurants.email == request.form.get("E-mail")).first()
+        if restaurant:
+            return error("Ten adres e-mail jest zajęty!")
+
+        else:
+            email = request.form.get("E-mail")
+            nazwa = request.form.get("nazwa")
+            haslo = generate_password_hash(request.form.get("Haslo"))
+
+            # dodaje użytkownika do bazy danych
+
+            new_restaurant = Restaurants(name=nazwa, email=email, password=haslo)
+            db.session.add(new_restaurant)
+            db.session.commit()
+
+            # Przekierowuje na strone główną
+            return redirect("/")
     else:
         return render_template("register_restaurant.html")
 @app.route("/login_restaurant", methods=["GET", "POST"])
