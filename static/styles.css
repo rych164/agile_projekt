@@ -131,6 +131,37 @@ article .tytul{
 	text-decoration: bold;
 	
 }
+.dostawa input[type="text"],
+.dostawa input[type="email"],
+.dostawa input[type="password"],
+.dostawa input[type="tel"],
+.dostawa button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.dostawa input[type="text"],
+.dostawa input[type="email"],
+.dostawa input[type="password"],
+.dostawa input[type="tel"] {
+    background-color: #f8f8f8;
+    color: #333;
+    border: 2px solid #CDB891;
+}
+
+.dostawa button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    width: 7%
+}
+
+.dostawa button:hover {
+    background-color: #555;
+}
 header a{
 	position:relative;
 }
@@ -208,6 +239,13 @@ article p {
 }
 .promo .opcje select {
 	text-align: center;
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #CDB891;
+	background-color: #f8f8f8;
+	font-size: 16px;
+	color: #333;
+	margin: 8;
 }
 
 
@@ -260,8 +298,20 @@ footer {
 .tel p, .mail p {
     font-size: 120%;
 }
-.button1{
-	margin-left: 47%;
+.button1 button {
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    margin: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+
+}
+
+.button1 button:hover {
+    background-color: #555;
 }
 .link{
 	background-color:#333;
