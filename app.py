@@ -288,7 +288,26 @@ def remove_from_cart():
 
 @app.route("/all_shops")
 def all_shops():
-    return render_template("all_shops.html")
+    mnu = db.session.query(Menu).all()
+    restaurants = ['McDonalds', 'KFC', 'Burger King', 'Kitchen', 'Złote Smaki']
+    rest_img = [
+                'static/restaurant_logos/mcdonald.png',
+                'static/restaurant_logos/kfc.png',
+                'static/restaurant_logos/burgerking.png',
+                'static/restaurant_logos/Kitchen.png',
+                'static/restaurant_logos/zlote_smaki.png',
+    ]
+    menu = []
+    for item in mnu:
+        menu.append({
+            'restaurant': item.restaurant,
+            'product': item.product,
+            'price': f"{item.prize:.2f} zł",
+            'id': item.menu_id,
+            'img_name': 'static/product_images/' + item.img_name,
+            'desc': item.img_description
+        })
+    return render_template("all_shops.html", menu=menu, restaurants=restaurants, rest_img=rest_img)
 
 
 @app.route("/end")
