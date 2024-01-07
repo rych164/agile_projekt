@@ -88,6 +88,8 @@ def index():
             'product': item.product,
             'price': f"{item.prize:.2f} zł",
             'id': item.menu_id,
+            'img_name':'static/product_images/'+item.img_name,
+            'desc': item.img_description
         })
     return render_template("index.html", menu=menu)
 
