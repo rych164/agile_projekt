@@ -41,6 +41,8 @@ class Menu(db.Model):
     menu_id=db.Column(db.Integer,primary_key=True)
     restaurant=db.Column(db.Text,nullable=False)
     product=db.Column(db.Text,nullable=False)
+    img_name=db.Column(db.Text,nullable=False)
+    img_description=db.Column(db.Text,nullable=False)
     prize=db.Column(db.REAL,nullable=False)
 
     def __repr__(self):
@@ -130,7 +132,7 @@ def register_restaurant():
             db.session.commit()
 
             # Przekierowuje na strone główną
-            return redirect("/")
+            return render_template("login_restaurant.html")
     else:
         return render_template("register_restaurant.html")
 @app.route("/login_restaurant", methods=["GET", "POST"])
