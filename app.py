@@ -328,7 +328,6 @@ def home_info():
             or not kod_pocztowy
             or not ulica
             or not numer_domu
-            or not szczegoly
         ):
             return error("Wszystkie pola muszą być wypełnione")
 
