@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+<title> Index</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+	{%include 'navbar.html'%}
+		<section>
+			<article>
+				{% for i in range(menu|length) %}
+				<div class="card">
+					<h2> {{ menu[i]['restaurant'] }}</h2>
+					<h3> {{ menu[i]['product'] }} {{ menu[i]['price'] }}</h3>
+
+				<div class="cardImg" style="height:200px;">
+				<img src= {{menu[i]['img_name']}} >
+				</div>
+                    <br />
+                    <br />
+                    <br />
+					<div class="przyciski">
+									<form action="basket" method="post">
+			                        <p> {{ menu[i]['desc'] }}</p>
+									<input name="id" type="hidden" value={{menu[i]['id']}}>
+			                        <button type="submit" class="przycisk">Dodaj do koszyka</button>
+									</form>
+	                    		</div>
+				</div>
+				{% endfor %}
+			</article>
+		</section>
+    {%include 'footer.html'%}
+</body>
+</html>

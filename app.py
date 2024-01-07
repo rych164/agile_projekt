@@ -297,17 +297,14 @@ def all_shops():
                 'static/restaurant_logos/Kitchen.png',
                 'static/restaurant_logos/zlote_smaki.png',
     ]
-    menu = []
-    for item in mnu:
-        menu.append({
-            'restaurant': item.restaurant,
-            'product': item.product,
-            'price': f"{item.prize:.2f} zł",
-            'id': item.menu_id,
-            'img_name': 'static/product_images/' + item.img_name,
-            'desc': item.img_description
-        })
-    return render_template("all_shops.html", menu=menu, restaurants=restaurants, rest_img=rest_img)
+    descrip = [
+        'Odkryj bogactwo smaków w menu McDonalds! Zaskocz się klasycznymi hamburgerami i chrupiącymi frytkami. W każdym kęsie poczuj niepowtarzalny smak jakościowej kuchni fast food.',
+        'Rozkoszuj się niepowtarzalnymi smakami kurczaka w KFC. Soczyste kawałki w chrupiącej panierce, aromatyczne przyprawy i oryginalne przysmaki.',
+        'W Burger King czeka na Ciebie klasyczna jakość w nowoczesnym stylu. Spróbuj soczystych burgerów, świeżych sałatek i chrupiących frytek. Odkryj unikalne smaki w przyjaznej atmosferze.',
+        'Daj się ponieść smakom w Kitchen, gdzie kuchnia polska i włoska spotykają się w harmonii. Spróbuj tradycyjnych polskich dań i włoskich specjałów, tworząc wyjątkowe doświadczenie kulinarne.',
+        'Odkryj sztukę kulinarną w Złotych Smakach, gdzie kuchnia azjatycka ożywa w wyjątkowym menu. Smakuj aromatyczne potrawy, świeże sushi oraz pikantne zupy.',
+    ]
+    return render_template("all_shops.html", descrip=descrip , restaurants=restaurants, rest_img=rest_img)
 
 
 @app.route("/end")
@@ -351,6 +348,28 @@ def home_info():
         return redirect("/payment")
     else:
         return render_template("home_info.html")
+
+
+@app.route("/restaurant_menu", methods=['POST'])
+def restaurant_menu():
+    if request.method == 'POST':
+        item_id = request.form.get("id")
+        if item_id == 'Burger':
+            item_id = 'Burger King'
+        if item_id == 'Złote':
+            item_id = 'Złote Smaki'
+        restaurants = db.session.query(Menu).filter(Menu.restaurant == item_id).all()
+        menu = []
+        for item in restaurants:
+            menu.append({
+                'restaurant': item.restaurant,
+                'product': item.product,
+                'price': f"{item.prize:.2f} zł",
+                'id': item.menu_id,
+                'img_name': 'static/product_images/' + item.img_name,
+                'desc': item.img_description
+            })
+        return render_template("restaurant_menu.html", menu=menu)
 
 
 if __name__ == "__main__":
