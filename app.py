@@ -88,6 +88,8 @@ def index():
             'product': item.product,
             'price': f"{item.prize:.2f} zł",
             'id': item.menu_id,
+            'img_name':'static/product_images/'+item.img_name,
+            'desc': item.img_description
         })
     return render_template("index.html", menu=menu)
 
@@ -265,7 +267,7 @@ def basket():
             it = query.product
             price = query.prize
             sum += price
-            items.append(f"{it} - {price}")
+            items.append(f"{it} - {price:.2f}")
             it_id.append(query.menu_id)
     else:
         return render_template("basket.html", items=items, sum=sum, it_id=it_id)
