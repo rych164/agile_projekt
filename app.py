@@ -169,10 +169,10 @@ def login_restaurant():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Logowanie użytkownika"""
-    session.clear()
 
     # Metoda POST
     if request.method == "POST":
+        session.clear()
         # Sprawdzam czy dane zostały podane
         if not request.form.get("E-mail") or not request.form.get("Haslo"):
             return error("Musisz podać e-mail i hasło!")
