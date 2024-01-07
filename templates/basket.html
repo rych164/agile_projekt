@@ -29,22 +29,25 @@
             <div class="promo" id="promo" name="promo">
                 <div class="opcje" id="opcje" name="opcje">
                     <h3>Wybierz promocję</h3>
-                        <select>
+                        <select name="promocja" id="promocja">
                         <optgroup label="Promocje sezonowe">
-                            <option value="capitol">Promocja zimowa -10%</option>
-                            <option value="tpl">Promocja Sylwestrowa -5%</option>
+                            <option value="0">Brak promocji</option>
+                            <option value="0.10">Promocja zimowa -10%</option>
+                            <option value="0.05">Promocja Sylwestrowa -5%</option>
+
                             </optgroup>
                             <optgroup label="Promocje stałe">
-                                <option value="uniwroc">Promocja stałego klienta -15%</option>
-                                <option value="pwr">Promocja 1+1</option>
+                                <option value="0.15">Promocja stałego klienta -15%</option>
                                 </optgroup>
                             </select>
                      <br />
                     <label for="kwotaDoZaplaty">Do zapłaty:</label>
-                <input type="number" id="kwotaDoZaplaty" name="kwotaDoZaplaty"	disabled>
+                <input type="number" id="kwotaDoZaplaty" value={{sum}}  disabled>
                     <br />
 			<div class="button1">
-        			<button type="submit">Forma płatności</button>
+                <form action="basket" method="post">
+        			<button type="submit">Przejdź dalej</button>
+                </form>
                 <br />
             		</div>
                 </div>
@@ -52,5 +55,26 @@
         
     <br />
     {%include 'footer.html'%}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const discountOptions = document.getElementById('promocja');
+    const totalAmountInput = document.getElementById('kwotaDoZaplaty');
+    const originalTotal = parseFloat(totalAmountInput.value);
+
+    discountOptions.addEventListener('change', function () {
+        const selectedDiscount = parseFloat(discountOptions.value);
+        const discountedTotal = calculateDiscount(originalTotal, selectedDiscount);
+        updateTotalAmount(discountedTotal);
+    });
+
+    function calculateDiscount(total, discount) {
+        return total * (1 - discount);
+    }
+
+    function updateTotalAmount(amount) {
+        totalAmountInput.value = amount.toFixed(2);
+    }
+});
+</script>
 </body>
 </html>
