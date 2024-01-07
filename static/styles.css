@@ -63,11 +63,21 @@ article {
 	float:left;
 	width:100%;
 }
+.card h2{
+    text-align:center;
+}
 .cardImg {
 	background-color: #fff;
 	padding:20px;
 	margin-top:20px;
-
+}
+.cardImgrest {
+	background-color: #fff;
+	padding:20px;
+	margin-top:20px;
+	position:center;
+	margin-left:25%;
+	margin-bottom:20%;
 }
 article .card {
 	background-color:#fff;
