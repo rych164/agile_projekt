@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="static/styles.css">
     <meta charset="UTF-8">
 
-<script type="text/javascript" src="restauracje.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='restauracje.js') }}"></script>
 </head>
 <body>
 	{%include 'navbar.html'%}
@@ -43,11 +43,11 @@
 
         <table id="dane">
         <tr>
-            <td><img height="200px" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/75/fc/86/hotel-golebiewski.jpg?w=900&h=-1&s=1" id="papuga" onclick="p1()" /> </td>
-            <td><img height="200px" src="https://cf.bstatic.com/images/hotel/max1024x768/253/253297049.jpg" id="zyrafa" onclick="p2()" /> </td>
-            <td><img height="200px" src="https://cf.bstatic.com/images/hotel/max1024x768/117/117485063.jpg" id="zebra" onclick="p3()" /> </td>
-            <td><img height="200px" src="https://www.slaskie.travel/Media/Default/.MainStorage/ContentItemDocumentTypeRecord/gf2wbazu.ozg/634762b7be04a3eac4d5d6b57f8abab1.jpg" id="wilk" onclick="p4()" /> </td>
-            <td><img height="200px" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.trivago.pl%2Fwisla-114131%2Fhotel%2Fpremium-wisla-patria-1399420&psig=AOvVaw1pBH98valDUusNAuuuimgU&ust=1607703661781000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCAl4Tpw-0CFQAAAAAdAAAAABAD" id="krokodyl" onclick="p5()" /> </td>
+            <td><img height="200px" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/75/fc/86/hotel-golebiewski.jpg?w=900&h=-1&s=1" id="papuga" onmouseover="p1()" /> </td>
+            <td><img height="200px" src="https://cf.bstatic.com/images/hotel/max1024x768/253/253297049.jpg" id="zyrafa" onmouseover="p2()" /> </td>
+            <td><img height="200px" src="https://cf.bstatic.com/images/hotel/max1024x768/117/117485063.jpg" id="zebra" onmouseover="p3()" /> </td>
+            <td><img height="200px" src="https://www.slaskie.travel/Media/Default/.MainStorage/ContentItemDocumentTypeRecord/gf2wbazu.ozg/634762b7be04a3eac4d5d6b57f8abab1.jpg" id="wilk" onmouseover="p4()" /> </td>
+            <td><img height="200px" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.trivago.pl%2Fwisla-114131%2Fhotel%2Fpremium-wisla-patria-1399420&psig=AOvVaw1pBH98valDUusNAuuuimgU&ust=1607703661781000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMCAl4Tpw-0CFQAAAAAdAAAAABAD" id="krokodyl" onmouseover="p5()" /> </td>
         </tr>
         </table>
     </div>
