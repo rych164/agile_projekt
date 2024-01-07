@@ -265,7 +265,7 @@ def basket():
             it = query.product
             price = query.prize
             sum += price
-            items.append(f"{it} - {price}")
+            items.append(f"{it} - {price:.2f}")
             it_id.append(query.menu_id)
     else:
         return render_template("basket.html", items=items, sum=sum, it_id=it_id)
