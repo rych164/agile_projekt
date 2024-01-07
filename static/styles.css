@@ -197,10 +197,12 @@ header a img {
 .shops{
 	margin-right: 65%;
 }
+
 .przyciski {
-    display: flex;
     align-items: center;
     justify-content: space-between;
+	text-decoration: none ;
+	display:block;
 }
 
 .przycisk {
@@ -210,6 +212,8 @@ header a img {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+	text-decoration: none ;
+	display:block;
 }
 
 .przycisk:hover {
@@ -316,7 +320,7 @@ footer {
 .link{
 	background-color:#333;
 	border:none;
-	tetx-decoration:none;
+	text-decoration:none;
 	color:#F0E68C;
 	text-align:baseline;
 	font-family:inherit;
@@ -334,7 +338,7 @@ footer {
     float:right;
 }
 .dropdown-menu{
-    lelf:0;
+    left:0;
     top:calc(100% + .25rem);
     background-color:#333;
     color:#F0E68C;
@@ -347,4 +351,29 @@ footer {
 .dropdown > .link:focus+.dropdown-menu{
     opacity: 1;
     transition: all .3ms ease-in-out;
+}
+
+.przycis {
+    align-items: center;
+    justify-content: space-between;
+	text-decoration: none ;
+	display:block;
+}
+.przy {
+	padding: 8px 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+	text-decoration: none ;
+	display:block;
+	width: 10%;
+	margin-left: 45%;
+}
+.przy:hover {
+    background-color: #555;
+}
+a {
+	text-decoration:none;
 }
