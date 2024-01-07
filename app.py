@@ -249,15 +249,21 @@ def register():
         return render_template("register.html")
 
 
-@app.route("/basket", methods=["POST", "GET"])
-def basket():
+@app.route("/add_basket", methods=["POST"])
+def add_basket():
     if "cart" not in session:
         session["cart"] = []
     if request.method == "POST":
         item_id = request.form.get("id")
         if item_id:
             session["cart"].append(item_id)
+    return redirect("/basket")
 
+
+@app.route("/basket", methods=["POST", "GET"])
+def basket():
+    if request.method == "POST":
+        return render_template("home_info.html")
     items = []
     it_id = []
     sum = 0
@@ -269,6 +275,7 @@ def basket():
             sum += float(price)
             items.append(f"{it} - {price:.2f}")
             it_id.append(query.menu_id)
+
     else:
         return render_template("basket.html", items=items, sum=round(sum, 2), it_id=it_id)
 
