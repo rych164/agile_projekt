@@ -63,11 +63,21 @@ article {
 	float:left;
 	width:100%;
 }
+.card h2{
+    text-align:center;
+}
 .cardImg {
 	background-color: #fff;
 	padding:20px;
 	margin-top:20px;
-
+}
+.cardImgrest {
+	background-color: #fff;
+	padding:20px;
+	margin-top:20px;
+	position:center;
+	margin-left:25%;
+	margin-bottom:20%;
 }
 article .card {
 	background-color:#fff;
@@ -179,7 +189,7 @@ header a img {
 }
  .payment-form h2 {
 	 margin-left: 40%;
-	 
+
 }
 .payment-option {
 	display: flex;
@@ -192,7 +202,7 @@ header a img {
 	margin-left: 45%;
 }
 .payment-form button {
-	 margin-left: 48%;	
+	 margin-left: 48%;
 }
 .shops{
 	margin-right: 65%;
@@ -334,7 +344,6 @@ footer {
     float:right;
 }
 .dropdown-menu{
-    position:absolute
     lelf:0;
     top:calc(100% + .25rem);
     background-color:#333;
