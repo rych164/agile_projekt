@@ -145,13 +145,18 @@ article .tytul{
 .dostawa input[type="email"],
 .dostawa input[type="password"],
 .dostawa input[type="tel"],
-.dostawa button {
+.dostawa button, .promo .opcje input[type="number"]
+{
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
 }
+ .promo .opcje {
+	 text-decoration: bold;
+	 font-family: "Arial Black";
+ }
 
 .dostawa input[type="text"],
 .dostawa input[type="email"],
