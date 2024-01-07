@@ -264,6 +264,8 @@ def add_basket():
 def basket():
     if request.method == "POST":
         return render_template("home_info.html")
+    if "cart" not in session:
+        session["cart"] = []
     items = []
     it_id = []
     sum = 0
@@ -280,9 +282,13 @@ def basket():
         return render_template("basket.html", items=items, sum=round(sum, 2), it_id=it_id)
 
 
-@app.route("/payment")
+@app.route("/payment", methods=['GET', 'POST'])
 def payment():
-    return render_template("payment.html")
+    if request.method == 'POST':
+        session['cart'].clear()
+        return render_template("end.html")
+    else:
+        return render_template("payment.html")
 
 
 @app.route('/remove_from_cart', methods=['POST'])
