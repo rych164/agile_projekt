@@ -5,8 +5,37 @@
     <meta charset="UTF-8">
 </head>
 <body>
-	{%include 'navbar.html'%}
-	<h2> <a href="#">Twoje zamówienie jest w drodze!</a> </h2>
-    {%include 'footer.html'%}
+    {% include 'navbar.html' %}
+        <div class="endnag">
+        <h3>Twoje zamówienie jest w drodze!</h3>
+        </div>
+    <div class="gotowe">
+        <br />
+        <div class="gotowe1">
+                <img src="static/knife.png" width="200" height="200">
+                <img src="static/bag.png" width="200" height="200">
+                <img src="static/car.png" width="200" height="200">
+        </div>
+        <br />
+        <br />
+        <div class="gotowe3">
+                <label>Przygotowanie</label>
+                <label>Pakowanie</label>
+                <label>Dostawa</label>
+        </div>
+        <div class="gotowe2">
+            <div class="loader-container">
+                <div class="loader-bar" id="loaderBar"></div>
+            </div>
+            <br>
+            <br>
+        </div>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    {% include 'footer.html' %}
 </body>
+</html>
 </html>

@@ -8,19 +8,20 @@
 	{%include 'navbar.html'%}
 		<section>
 			<article>
+            <div class="opis>">
+                <h1>Witaj w naszej restauracji!</h1>
 				<p>Nasza oferta jest zróżnicowana, by sprostać nawet najbardziej wyrafinowanym gusta. <br />
                     Bez względu na to, czy jesteś miłośnikiem kuchni orientalnej, klasycznych dań kuchni włoskiej<br />
                     czy też fanem zdrowych, wegańskich posiłków - mamy dla Ciebie coś wyjątkowego.<br/>
-                    <br/></p>
-                <p>
+                    <br/>
                     Wierzymy, że jedzenie powinno być nie tylko smaczne, ale także dostępne zawsze, gdy masz na nie ochotę. <br/>
                     Dlatego oferujemy szybki i wygodny dowóz pod Twojego drzwi, <br />
                     dzięki któremu możesz cieszyć się ulubionymi potrawami bez wychodzenia z domu.<br/>
                     <br/>
-</p><p>
                     Nasza misja to nie tylko kulinarna podróż, ale także dbałość o Twój czas i wygodę. <br/>
                     Dlatego też pracujemy z pasją, by dostarczyć Ci nie tylko pyszne jedzenie, <br/>
                     ale także niezapomniane doświadczenie kulinarne, które sprawi, że wrócisz do nas z przyjemnością.<br/><br/></p>
+                <div>
                 <h3>Sprawdź co polecamy!</h3>
 				{% for i in range(3) %}
 				<div class="card">
@@ -42,6 +43,8 @@
 	                    		</div>
 				</div>
 				{% endfor %}
+                </div>
+            </div>
 			</article>
 		</section>
     {%include 'footer.html'%}

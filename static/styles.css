@@ -249,6 +249,7 @@ article h3{
 article p {
 	font-size: 20px;
 	text-align: center;
+	background: #dddddd;
 }
 .promo {
 	background-color:#fff;
@@ -285,7 +286,7 @@ footer {
 .contact, .socials {
     display: inline-block;
     vertical-align: top;
-    margin: 0 20px; /* Zmniejszyłem marginesy */
+    margin: 0 20px;
 }
 .socials {
     margin-left: 0;
@@ -306,7 +307,7 @@ footer {
 
 .social-icons li {
     display: inline-block;
-    margin-right: 20px; /* Zwiększyłem margines między ikonami */
+    margin-right: 20px;
 }
 
 .social-icons a {
@@ -318,7 +319,7 @@ footer {
 .tel, .mail {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 400px; /* Zwiększyłem margines między obrazkami "mail1" i "phone1" */
+    margin-right: 400px;
 }
 
 .tel p, .mail p {
@@ -399,6 +400,59 @@ footer {
 a {
 	text-decoration:none;
 }
+
+.opis{
+	background: #dddddd;
+}
+h1{
+	font-size: 200%;
+	text-align:center;
+}
+.gotowe {
+	text-align: center;
+	background: #ffffff;
+}
+
+.gotowe1 img {
+    margin-right: 280px;
+}
+.loader-container {
+    width: 57%;
+}
+
+.loader-bar {
+    height: 20px;
+    background-color: #333;
+    animation: loadingAnimation 10s linear infinite;
+    margin-left: 25%;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+.endnag{
+	text-align:center;
+	font-size: 40px;
+}
+
+.gotowe {
+    text-align: center;
+}
+
+.gotowe3 label{
+	margin-right: 300px; /* Doda odstęp poziomo między etykietami */
+	font-size: 30px;
+	font-family: "Arial Black";
+}
+=======
 input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
@@ -420,3 +474,4 @@ input[type="radio"]:checked {
 input[type="radio"]:checked + label {
   font-weight: bold;
 }
+
