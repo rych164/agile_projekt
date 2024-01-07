@@ -266,11 +266,11 @@ def basket():
         if query:
             it = query.product
             price = query.prize
-            sum += price
+            sum += float(price)
             items.append(f"{it} - {price:.2f}")
             it_id.append(query.menu_id)
     else:
-        return render_template("basket.html", items=items, sum=sum, it_id=it_id)
+        return render_template("basket.html", items=items, sum=round(sum, 2), it_id=it_id)
 
 
 @app.route("/payment")
