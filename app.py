@@ -9,7 +9,7 @@ from sqlalchemy.sql.expression import func
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///glodny.db'
 db=SQLAlchemy(app)
 
 app.config["SESSION_PERMANENT"] = False
